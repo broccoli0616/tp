@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Nusnetid;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -93,6 +94,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void removePerson(Person key) {
         persons.remove(key);
     }
+
+    /**
+     * Finds a person by their NUSNET ID.
+     * Returns null if not found.
+     *
+     * @param nusnetid The NUSNET ID to search for.
+     * @return The person with the matching NUSNET ID, or null if not found.
+     */
+    public Person findPersonByNusnetid(Nusnetid nusnetid) {
+        requireNonNull(nusnetid);
+        return persons.asUnmodifiableObservableList().stream()
+                .filter(person -> person.getNusnetid().equals(nusnetid))
+                .findFirst()
+                .orElse(null);
+    }
+
+
 
     //// util methods
 

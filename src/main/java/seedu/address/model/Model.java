@@ -5,14 +5,31 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Nusnetid;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Slot;
+
 
 /**
  * The API of the Model component.
  */
+@SuppressWarnings("checkstyle:Regexp")
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+
+    /**
+     * {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    /**
+     * Returns the tutorial associated with the given slot.
+     * @param slot
+     * @return
+     */
+    Tutorial findTutorialBySlot(Slot slot);
+    /**
+     * Finds a person by their NUSNET ID.
+     * Returns null if not found.
+     */
+    Person findPersonByNusnetid(Nusnetid nusnetid);
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -84,4 +101,16 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Marks attendance for a student in a specific tutorial slot.
+     *
+     * @param slot The tutorial slot.
+     * @param week The week number.
+     * @param nusnetid The student's NUSNET ID.
+     * @param status The attendance status.
+     * @throws IllegalArgumentException if week is invalid.
+     */
+    void markAttendance(Slot slot, int week, Nusnetid nusnetid, AttendanceStatus status);
+
 }
