@@ -967,11 +967,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### 4. Scalability Requirements
 ##### NFR-S1: User Scalability
-- Supports TAs managing multiple tutorial slots.
+- Supports TAs managing multiple tutorial groups.
 
 ##### NFR-S2: Data Scalability
 - Performance must not degrade noticeably up to 100 students.
-- Supports unlimited consultation bookings per student.
 
 #### 5. Usability Requirements
 ##### NFR-U1: Learnability
