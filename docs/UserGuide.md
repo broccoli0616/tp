@@ -152,7 +152,7 @@ Format: `list_consult`
 Note:
 * After using `list_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
 * Users are highly recommended to use `list` command to find out the global index of the student before using `edit_student` or `delete` commands.
-* Users can use `list` command to return to the student list view.
+* Users can use `list` command to return to the full student list view.
 
 ---
 ## Person Commands
@@ -225,6 +225,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
+* Users can use `list` command to return to the full student list view.
 
 
 Examples:
@@ -353,6 +354,7 @@ Format: `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`
 * The groupId, week number and status **must be valid**.
 * The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, and lastly the existence of the group.
+* After attendance taking, users can use `list` command to return to the full student list view.
 
 Examples:
 * `mark_all_attendance g/T01 w/3 status/present` marks all students in group T01 as present for week 3.
@@ -441,6 +443,7 @@ Format: `find_group g/GROUPID`
 
 * Displays all students belonging to the specified group.
 * The group ID **must be valid**.
+* Users can use `list` command to return to the full student list view.
 
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
