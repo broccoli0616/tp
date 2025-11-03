@@ -676,13 +676,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a consultation by specifying student NUSNET ID, date_start_time, and date_end_time.
+1. User requests to add a consultation by specifying student's NUSNET ID, start date & time, and end date & time.
 
-2. AddressBook validates the student NUSNET ID, date, and times.
+2. AddressBook validates the NUSNET ID, dates, and times.
 
 3. AddressBook creates the consultation booking for the student.
 
-4. AddressBook shows success message with consultation details.
+4. AddressBook shows success message with consultation details and displays list of consultations to user.
 
     Use case ends.
 
@@ -690,64 +690,76 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Student NUSNET ID does not exist in the directory.
 
-  * 2a1. AddressBook shows error: `Student not found`.
+  * 2a1. AddressBook shows an error message.
 
        Use case ends.
 
 * 2b. End time is not after start time.
 
-    * 2b1. AddressBook shows error: `End time must be after start time`.
+    * 2b1. AddressBook shows an error message.
 
          Use case ends.
 
 * 2c. The new consultation overlaps with an existing one.
 
-    * 2c1. AddressBook shows error: `Time conflict with existing booking`.
+    * 2c1. AddressBook shows an error message.
 
          Use case ends.
 
 * 2d. A consultation with identical date and time already exists.
 
-    * 2d1. AddressBook shows error: `Duplicate consultation booking`.
+    * 2d1. AddressBook shows an error message.
 
          Use case ends.
+
+* 2d. Student already has an existing consultation.
+
+    * 2d1. AddressBook shows an error message.
+
+      Use case ends.
+
+* 4a. The consultation exceeds 3 hours in duration.
+
+    * 4a1. AddressBook displays a reminder message.
+
+      Use case ends.
+
+* 4b. The consultation is over or ongoing.
+
+    * 4b1. AddressBook displays a reminder message.
+
+      Use case ends.
 
 **Use case:** UC08 - Delete a consultation
 **User**: TA
 
 **MSS**
 
-1. User requests to delete a consultation by specifying student NUSNET ID, date_start_time, and date_end_time.  
+1. User requests to delete a consultation by specifying student's NUSNET ID.  
 
-2. AddressBook validates the student NUSNET ID, date, and times.  
+2. AddressBook validates the NUSNET ID.  
 
 3. AddressBook locates the consultation record that matches the provided details.  
 
-4. AddressBook deletes the consultation booking from the system.  
+4. AddressBook deletes the consultation from the system.  
 
-5. AddressBook shows success message confirming the deletion.  
+5. AddressBook shows success message confirming the deletion and displays list of consultations to user.  
 
     Use case ends.  
 
 **Extensions**
 
-* 2a. Student NUSNET ID does not exist in the directory.  
+* 2a. NUSNET ID does not exist in the directory.  
 
-  * 2a1. AddressBook shows error: `Student not found`.  
-
-       Use case ends.  
-
-* 3a. Consultation record with the specified details does not exist.  
-
-  * 3a1. AddressBook shows error: `Consultation not found`.  
+  * 2a1. AddressBook shows an error message.  
 
        Use case ends.  
 
-* 3b. Consultation list is empty.  
+* 3a. Student with specified NUSNET ID does not have a consultation.  
 
-  * 3b1. AddressBook shows error: `No consultations available to delete`.  
+  * 3a1. AddressBook shows an error message.  
 
-       Use case ends.  
+       Use case ends.
 
 **Use case:** UC09 - Mark attendance
 **User**: TA
@@ -1014,6 +1026,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+
+**Consultation terms**
+* **Ongoing**: A consultation is ongoing if it has a start time before the current time and a end time after the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1600` to `20251010 1800` is ongoing.)
+* **Over**: A consultation is over if its end time is before the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1400` to `20251010 1600` is over.)
+* **Overlap**: A consultation overlaps with another consultation if its start time is before the other consultation's end time and its end time is after the other consultation's start time.
+
+  (E.g. a consultation from `20251010 1400` to `20251010 1600` overlaps with a consultation from `20251010 1559` to `20251010 1759` but does not overlap with a consultation from `20251010 1600` to `20251010 1800`.)
 
 --------------------------------------------------------------------------------------------------------------------
 
