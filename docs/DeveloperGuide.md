@@ -102,8 +102,7 @@ How the `Logic` component works:
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
-Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
-
+Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
@@ -225,7 +224,7 @@ The mark attendance feature allows users to mark the attendance status (e.g., `p
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAttendanceSequenceDiagram.puml" width ="900" alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
+<puml src="diagrams/MarkAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
 
 <box type="info" seamless>
 
@@ -249,7 +248,7 @@ The mark all attendance feature allows users to mark the attendance status (e.g.
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml" width ="900" alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
+<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
 
 <box type="info" seamless>
 
