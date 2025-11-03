@@ -117,7 +117,7 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
   * Group ID: Starts with `T` or `B` (case-insensitive) followed by exactly two digits, e.g., `T01`, `B04`.
   * Homework number: An integer between 1 to 13 inclusive.
   * Homework status: One of `complete`, `incomplete`, or `late`.
-  * Attendance week: An integer between 2 to 13.
+  * Attendance week: An integer between 2 to 13 inclusive.
   * Attendance status: One of `present`, `absent`, or `excused`.
   * Date & time: In the format `yyyyMMdd HHmm`, e.g. `20240915 1400` for 2:00 PM on 15 Sep 2024.
   * Index: A positive integer, e.g. 1, 2, 3, …​
@@ -382,7 +382,7 @@ Format: `add_consult i/NUSNETID from/DATE_TIME to/DATE_TIME`
 * A consultation cannot overlap with other existing consultations. (i.e. Students can only have one-to-one consultations)
 
 Examples:
-* `add_consult i/E1234567 from/20251010 1400 to/20251010 1600` adds a consultation from 2–3PM on 15 Sep 2024 for student `E1234567`.
+* `add_consult i/E1234567 from/20251010 1400 to/20251010 1600` adds a consultation from 2–4PM on 10 Oct 2025 for student `E1234567`.
 * `add_consult i/E2345678 from/20240920 1000 to/20240920 1100` adds a consultation from 10–11AM on 20 Sep 2024 for student `E2345678`.
   
 Note:
