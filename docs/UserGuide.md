@@ -40,7 +40,7 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
     ```
    
    A GUI similar to the below should appear in a few seconds. <br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui_launch.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -105,41 +105,42 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-* A student is considered as duplicate if both their NUSNET ID or Telegram handle or Phone Number or Email is the same as another existing student in the SoCTAssist
+* A student is considered as duplicate if his NUSNET ID, telegram handle, phone number or email address is the same as another existing student in the SoCTAssist.
 
 ## Parameter Constraints
 
-  * Name: May contain letters (including accents), digits, spaces, and quotes (\" and '), must not be blank, and must not contain '/' because '/' is used to identify different fields. And the name is at most 70 characters long. e.g. `John Doe`.
+  * Name: May contain letters (including accents), digits, spaces, and quotes (\" and '), must not be blank, and must not contain '/' because '/' is used to identify different fields. Name must be at most 70 characters long. e.g. `John Doe`.
   * NUSNET ID: An `E` (case-insensitive) followed by 7 digits, e.g. `E1234567`.
   * Telegram handle: Starts with `@` followed by at least 1 alphanumeric characters (underscores allowed), e.g. `@john_doe123`.
   * Phone number: A string of 3 to 30 digits can start with + to indicate country code, and only accept single phone number, e.g. `+6598765432`.
   * Email: A valid NUS email address in the format `localdomain@u.nus.edu`, e.g. `e1234567@u.nus.edu`.
-  * Group ID: Starts with `T` or `B` (case-insensitive) followed by exactly two digits, e.g., `T01`, `B04`.
-  * Assignment number: A positive integer between 1 to 3.
+  * Group ID: Starts with `T` or `B` (case-insensitive) followed by exactly two digits, e.g. `T01`, `B04`.
+  * Assignment number: An integer between 1 to 3.
   * Attendance week: An integer between 2 to 13.
   * Attendance status: One of `present`, `absent`, or `excused`.
   * Homework status: One of `complete`, `incomplete`, or `late`.
-  * DateTime: In the format `YYYYMMDD HHmm`, e.g. `20240915 1400` for 2:00 PM on 15 Sep 2024
-  * Index: A positive integer 1, 2, 3, …​
+  * Date & time: In the format `yyyyMMdd HHmm`, e.g. `20240915 1400` for 2:00 PM on 15 Sep 2024.
+  * Index: A positive integer, e.g. 1, 2, 3, …​
 </box>
 
 ## Viewing help : `help`
 
-Shows a message summarising all commands and displays a URL link that directs user to the help page.
-
-![help message](images/helpMessage.png)
+Shows a message summarising all commands and displays a URL link that directs user to the user guide.
 
 Format: `help`
+
+![help window](images/help_window.png)
 
 ---
 ## List Commands
 
-### Listing all persons : `list`
+### Listing all students : `list`
 
-Shows a list of all persons in the SoCTAssist.
+Shows a list of all students in the SoCTAssist.
 
 Format: `list`
 
+![list](images/list.png)
 
 ### Listing all consultations : `list_consult`
 
@@ -147,7 +148,9 @@ Displays list of all consultations in the SoCTAssist.
 
 Format: `list_consult`
 
-* Consultations will be sorted according to their start time, with the earliest consultation on top.
+![list_consult](images/list_consult.png)
+
+* Consultations will be sorted according to their start date & time, with the earliest consultation on top.
 
 Note:
 * After using `list_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
@@ -155,20 +158,20 @@ Note:
 * Users can use `list` command to return to the student list view.
 
 ---
-## Person Commands
+## Student Commands
 
-### Adding a person: `add_student`
+### Adding a student: `add_student`
 
-Adds a person to the SoCTAssist.
+Adds a student to the SoCTAssist.
 
 Format: `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID  [p/PHONE_NUMBER] [e/EMAIL]`
 
 <box type="tip" seamless>
 
-**Tip:** Phone and email are optional. You can omit either or both when adding a person.
-* For duplicate checking, NUSNET ID, Telegram handle, Phone Number and Email must be unique across all persons in the SoCTAssist.
+**Tip:** Phone and email are optional. You can omit either or both when adding a student.
+* For duplicate checking, NUSNET ID, Telegram handle, phone number and email address must be unique across all students in the SoCTAssist.
 * The parameter constraints are listed [here](#Parameter-Constraints).
-* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, Phone Number and Email. Now the exact duplicated field will not be reported in the error message.Need to find out by the User manually.
+* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, phone number and email. Currently, the exact duplicated field will not be reported in the error message. User needs to find the duplicated field manually.
 </box>
 
 Examples:
@@ -177,45 +180,45 @@ Examples:
 * `add_student n/Betsy Crow i/E1234562 p/1234567 t/@betsy g/T02  e/betsycrowe@u.nus.edu`
 
 
-### Editing a person : `edit_student`
+### Editing a student : `edit_student`
 
-Edits an existing person in the SoCTAssist.
+Edits an existing student in the SoCTAssist.
 
 Format: `edit_student INDEX [n/NAME] [i/NUSNETID]  [t/TELEGRAM] [p/PHONE] [e/EMAIL]`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the fields is provided to change the person's details.
+* Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer**, e.g. 1, 2, 3, …​
+* At least one of the fields must be provided to change the student's details.
 * Existing values will be updated to the input values.
 * You CANNOT use this command to change the tutorial group that this student belongs to. Use the `add_to_group` command instead.
-* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, Phone Number and Email. Now the exact duplicated field will not be reported in the error message.Need to find out by the User manually.
-* You can use p/ to remove the phone number or e/ to remove the email address of a person by leaving the parameter value empty.
-  e.g. `edit_student 2 p/` will remove the phone number of the 2nd person in the displayed person list.
+* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, phone number and email. Currently, the exact duplicated field will not be reported in the error message. User needs to find the duplicated field manually.
+* You can use `p/` to remove the phone number or `e/` to remove the email address of a student by leaving the parameter value empty.
 * The parameter constraints are listed [here](#Parameter-Constraints).
 
 
 Examples:
-*  `edit_student 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu` respectively.
-*  `edit_student 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+*  `edit_student 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@u.nus.edu` respectively.
+*  `edit_student 2 n/Betsy Crower` Edits the name of the 2nd student to be `Betsy Crower`.
+*  `edit_student 2 p/` will remove the phone number of the 2nd student.
 
 
-### Deleting a person : `delete`
+### Deleting a student : `delete`
 
-Deletes the specified person from the SoCTAssist.
+Deletes the specified student from the SoCTAssist.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the **displayed** person list.
+* Deletes the student at the specified `INDEX`.
+* The index refers to the index number shown in the **displayed** student list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the displayed person list.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd student in the displayed student list.
+* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
 
 ### Finding students by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds students whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -223,7 +226,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 
@@ -342,20 +345,25 @@ Adds a consultation session for the specified student.
 
 Format: `add_consult i/NUSNETID from/DATE_TIME to/DATE_TIME`
 
-* Both start (`from`) and end (`to`) times **must be in `YYYYMMDD HHmm` format**.
+![add_consult](images/add_consult.png)
+
+* Both start (`from`) and end (`to`) times **must be in `yyyyMMdd HHmm` format**.
 * The start time must be **earlier** than the end time**.
 * The NUSNET ID, start time and end time **must be valid**.
 * The parameter constraints are listed [here](#Parameter-Constraints).
-* If a consultation already exists for the student, it will be unavailable to add a new consultation to the student.
-* If the consultation time overlaps with an existing consultation for another student, it will be unavailable to add the new consultation.
+* A consultation cannot be added to a student who already has an existing consultation. (i.e. Each student can only have one assigned consultation)
+* A consultation cannot overlap with other existing consultations. (i.e. Students can only have one-to-one consultations)
 
 Examples:
-* `add_consult i/E1234567 from/20240915 1400 to/20240915 1500` adds a consultation from 2–3PM on 15 Sep 2024 for student `E1234567`.
+* `add_consult i/E1234567 from/20251010 1400 to/20251010 1600` adds a consultation from 2–3PM on 15 Sep 2024 for student `E1234567`.
 * `add_consult i/E2345678 from/20240920 1000 to/20240920 1100` adds a consultation from 10–11AM on 20 Sep 2024 for student `E2345678`.
   
 Note:
-* After using `add_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
+* After using `add_consult` command, user will be brought to consultation list view. Index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
 * Users are highly recommended to use `list` command to find out the global index of the student before using `edit_student` or `delete` commands.
+* Upon returning to student list view, newly added consultation will be reflected under the student.
+
+![student_list_with_consult_box](images/student_list_with_consult_box.png)
 
 ### Deleting a consultation : `delete_consult`
 
@@ -372,7 +380,7 @@ Examples:
 * `delete_consult i/E2345678` deletes consultation for student `E2345678`.
 
 Note:
-* After using `delete_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
+* After using `delete_consult` command, user will be brought to consultation list view. Index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
 * Users are highly recommended to use `list` command to find out the global index of the student before using `edit_student` or `delete` commands.
 
 ---
