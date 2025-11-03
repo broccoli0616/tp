@@ -20,7 +20,7 @@ public class AddConsultationCommand extends Command {
 
     public static final String COMMAND_WORD = "add_consult";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a consultation slot to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a consultation to the address book. "
             + "Parameters: "
             + PREFIX_NUSNETID + "NUSNETID "
             + PREFIX_FROM + "CONSULTATION START TIME "

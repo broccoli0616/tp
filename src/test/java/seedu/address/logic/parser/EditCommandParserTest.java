@@ -85,7 +85,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC,
                 "Email: " + Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_NUSNETID_DESC,
-                "Nusnetid: " + Nusnetid.MESSAGE_CONSTRAINTS); // invalid nusnetid
+                "NUSNET ID: " + Nusnetid.MESSAGE_CONSTRAINTS); // invalid nusnetid
         assertParseFailure(parser, "1" + INVALID_TELEGRAM_DESC,
                 "Telegram: " + Telegram.MESSAGE_CONSTRAINTS); // invalid telegram
         // invalid phone followed by valid email
