@@ -257,7 +257,7 @@ Format: `add_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER`
 Examples:
 * `add_hw i/E1234567 a/1` adds assignment 1 for the student with NUSNET ID `E1234567`, if it is not already added.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9b06a90e-ac91-403f-bab7-a518f2676da6" alt="image1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/9b06a90e-ac91-403f-bab7-a518f2676da6" alt="image1" width="100%" />
 </p>
 
 * `add_hw i/all a/2` adds assignment 2 for all students.
