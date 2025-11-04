@@ -1442,6 +1442,160 @@ This section provides step-by-step, comprehensive instructions for performing **
 | 7         | `mark_hw i/E1234567 a/1`                             | ❌ Missing status parameter     |
 | 8         | `mark_hw i/E1234567 i/E7654321 a/1 status/completed` | ❌ Duplicate prefixes           |
 
+### Mark Attendance
+
+1. Mark attendance for a single student  
+   1. Setup: Ensure that there is at least one student in the system with NUSNET ID `E1234567`.  
+   2. Execute the command:  
+      `mark_attendance i/E1234567 w/2 status/present`  
+   3. **Expected:**  
+   - Success message is displayed.
+   - The student’s attendance record now shows **present** for week **2**.
+
+2. Mark attendance (Student not found)
+   1. Setup: Ensure that there is no student with the NUSNET ID `E0000000` in the system.
+   2. Execute the command:
+      `mark_attendance i/E0000000 w/2 status/present`
+   3. **Expected:**
+   - Error message is displayed.
+
+3. Mark attendance (Invalid week)
+   1. Ensure that there is a student in the system with NUSNET ID `E1234567`.
+   2. Execute the command:
+      `mark_attendance i/E1234567 w/20 status/present`
+   2. **Expected:**
+   - Error message is displayed.
+
+4. Mark attendance (Invalid status)
+   1. Ensure that there is a student in the system with NUSNET ID `E1234567`.
+   2. Execute the command:
+      `mark_attendance i/E1234567 w/2 status/late`
+   3. **Expected:**
+   - Error message is displayed.
+
+### Mark All Attendance
+1. Mark attendance for all students
+    1. Setup: Ensure multiple students are present in the system.
+    2. Execute the command:  
+       `mark_attendance i/all w/2 status/absent`
+    3. **Expected:**
+    - Success message is displayed.
+    - All students’ attendance records now show **absent** for week **2**.
+
+### Add Consultation
+1. Add a consultation for a student  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567` that has no consultation.  
+   2. Execute the command:  
+      `add_consult i/E1234567 from/20251010 1400 to/20251010 1500`  
+   3. **Expected:**  
+   - Success message is displayed.
+   - List of consultations is updated to include the new consultation.
+
+2. Add a consultation (Student not found)  
+   1. Setup: Ensure that there is no student with the NUSNET ID `E0000000` in the system.
+   2. Execute the command:  
+      `add_consult i/E0000000 from/20251010 1400 to/20251010 1500`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+3. Add a consultation (End time before start time)  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234568`.
+   2. Execute the command:  
+      `add_consult i/E1234568 from/20251010 1500 to/20251010 1400`
+   3. **Expected:**  
+      - Error message is displayed.
+
+4. Add a consultation (Overlapping consultation)  
+   1. Setup: Ensure that there is a student in the system with a consultation from `20251010 1400` to `20251010 1500`. Ensure that there is a another student in the system with NUSNET ID `E1234569` without consultation.
+   2. Execute the command:  
+      `add_consult i/E1234569 from/20251010 1430 to/20251010 1530`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+5. Add a consultation (Incorrect date/time format)  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`.
+   2. Execute the command:  
+      `add_consult i/E1234567 from/2025-10-10 14:00 to/2025-10-10 15:00`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+6. Add a consultation (Invalid date)
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`.
+   2. Execute the command:  
+      `add_consult i/E1234567 from/20251310 1400 to/20251310 1500`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+### Delete Consultation
+1. Delete a consultation for a student  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`, and that the student has a consultation scheduled.
+   2. Execute the command:  
+      `delete_consult i/E1234567`
+   3. **Expected:**  
+   - Success message is displayed.
+   - The consultation list is updated to remove the deleted consultation.
+
+2. Delete a consultation (Student not found)  
+   1. Setup: Ensure that there is no student with the NUSNET ID `E0000000` in the system.
+   2. Execute the command:  
+      `delete_consult i/E0000000`
+   3. **Expected:**  
+   - Error message is displayed.
+
+3. Delete a consultation (No consultation found)  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234568`, and that the student does not have any consultation scheduled.
+   2. Execute the command:  
+      `delete_consult i/E1234568`
+   3. **Expected:**  
+      Error message is displayed.
+
+### Create Group
+1. Create a new group  
+   1. Ensure that group `T01` does not exist.
+   2. Execute the command:  
+      `create_group g/T01`  
+   2. **Expected:**  
+   - Success message is displayed.
+
+2. Create group (Group already exists)  
+   1. Setup: Ensure that group `T01` already exists in the system.
+   2. Execute the command:  
+      `create_group g/T01`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+### Add Student to Group
+1. Add a student to an existing group  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`.
+   2. Execute the command:  
+      `add_to_group i/E1234567 g/T01`  
+   3. **Expected:**  
+   - Success message is displayed.
+   - Student is updated with the new group.
+
+2. Add student to group (Student not found)  
+   1. Setup: Ensure that there is no student with the NUSNET ID `E0000000` in the system, and that group `T01` exists.
+   2. Execute the command:  
+      `add_to_group i/E0000000 g/T01`  
+   3. **Expected:**  
+   - Error message is displayed.
+
+3. Add student to group (Group already contains the student)
+   1. Setup: Ensure that there is a student with the NUSNET ID `E1234567` that is in group `T01`.
+   2. Execute the command:
+      `add_to_group i/E1234567 g/T01`
+   3. **Expected:**
+   - Error message is displayed.
+
+### Find Students by Group
+1. Find students by group  
+   1. Setup: Ensure that group `T01` exists and has students assigned to it.
+   2. Execute the command:  
+      `find_group g/T01`  
+   3. **Expected:**  
+   - Success message is displayed.
+   - List of students in group `T01` is displayed.
+
 
 ## **Appendix: Planned Enhancement**
 This section outlines potential future enhancements for the application that could improve its functionality, usability, or performance. These enhancements are not part of the current scope but may be considered for future development. 
