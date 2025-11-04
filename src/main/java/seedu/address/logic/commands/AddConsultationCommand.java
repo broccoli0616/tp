@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NUSNETID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TO;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -39,6 +40,8 @@ public class AddConsultationCommand extends Command {
             "Student already has a scheduled consultation";
     public static final String MESSAGE_CONSULTATION_DURATION_TOO_LONG =
             "Friendly reminder: Consultation duration exceeds 3 hours!";
+    public static final String MESSAGE_CONSULTATION_IS_OVER = "Friendly reminder: Consultation has ended!";
+    public static final String MESSAGE_CONSULTATION_IS_ONGOING = "Friendly reminder: Consultation is ongoing!";
 
     private static final Logger logger = Logger.getLogger(AddConsultationCommand.class.getName());
     private final Consultation toAdd;
@@ -77,12 +80,18 @@ public class AddConsultationCommand extends Command {
 
         model.addConsultation(toAdd);
         logger.info("Successfully added new consultation: " + toAdd);
-        if (Duration.between(toAdd.getFrom(), toAdd.getTo()).toHours() > 3) {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)) + "\n"
-                    + MESSAGE_CONSULTATION_DURATION_TOO_LONG, false, false, true);
-        } else {
-            return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)), false, false, true);
+        String commandResult = String.format(MESSAGE_SUCCESS, Messages.format(toAdd));
+        if (Duration.between(toAdd.getFrom(), toAdd.getTo()).toMinutes() > 3 * 60) {
+            commandResult = commandResult + "\n" + MESSAGE_CONSULTATION_DURATION_TOO_LONG;
         }
+        LocalDateTime now = LocalDateTime.now();
+        if (!toAdd.getTo().isAfter(now)) {
+            commandResult = commandResult + "\n" + MESSAGE_CONSULTATION_IS_OVER;
+        } else if (!toAdd.getFrom().isAfter(now)) {
+            commandResult = commandResult + "\n" + MESSAGE_CONSULTATION_IS_ONGOING;
+        }
+
+        return new CommandResult(commandResult, false, false, true);
     }
 
     @Override

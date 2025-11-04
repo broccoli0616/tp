@@ -158,8 +158,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `addhomework` command works:
-1. When the user enters an `addhomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `add_hw` command works:
+1. When the user enters an `add_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates an `AddHomeworkCommandParser` to parse the command arguments.
 3. `AddHomeworkCommandParser` validates and parses the NUSNET ID (or the keyword `all`) and the assignment ID.
 4. An `AddHomeworkCommand` object is created and executed.
@@ -183,8 +183,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `deletehomework` command works:
-1. When the user enters a `deletehomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `delete_hw` command works:
+1. When the user enters a `delete_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `DeleteHomeworkCommandParser` to parse the command arguments.
 3. `DeleteHomeworkCommandParser` validates and parses the NUSNET ID (or the keyword `all`) and the assignment ID.
 4. A `DeleteHomeworkCommand` object is created and executed.
@@ -208,8 +208,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `markhomework` command works:
-1. When the user enters a `markhomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_hw` command works:
+1. When the user enters a `mark_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkHomeworkCommandParser` to parse the command arguments.
 3. `MarkHomeworkCommandParser` validates and parses the NUSNET ID, assignment ID, and status.
 4. A `MarkHomeworkCommand` object is created and executed.
@@ -224,16 +224,16 @@ The mark attendance feature allows users to mark the attendance status (e.g., `p
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
+<puml src="diagrams/MarkAttendanceSequenceDiagram.puml"  alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `MarkAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `MarkAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.Due to limited space in the diagram, some input parameters(command text, markAttendanceMessage) are not explicitly shown in the diagram.
 
 </box>
 
-How the `markAttendance` command works:
-1. When the user enters a `markAttendance` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_attendance` command works:
+1. When the user enters a `mark_attendance` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkAttendanceCommandParser` to parse the command arguments.
 3. `MarkAttendanceCommandParser` validates and parses the NUSNET ID, week number, and attendance status.
 4. A `MarkAttendanceCommand` object is created and executed.
@@ -248,16 +248,16 @@ The mark all attendance feature allows users to mark the attendance status (e.g.
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
+<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml"  alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `MarkAllAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `MarkAllAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Due to limited space in the diagram, some input parameters(command text, markAttendanceMessage) are not explicitly shown in the diagram.
 
 </box>
 
-How the `markAllAttendance` command works:
-1. When the user enters a `markAllAttendance` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_all_attendance` command works:
+1. When the user enters a `mark_all_attendance` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkAllAttendanceCommandParser` to parse the command arguments.
 3. `MarkAllAttendanceCommandParser` validates and parses the GroupId, week number, and attendance status.
 4. A `MarkAllAttendanceCommand` object is created and executed.
@@ -339,8 +339,8 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 </box>
 
-How the `creategroup` command works:
-1. When the user enters a `creategroup` command, `LogicManager` passes it to `AddressBookParser`.
+How the `create_group` command works:
+1. When the user enters a `creat_egroup` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `CreateGroupCommandParser` to parse the command arguments.
 3. `CreateGroupCommandParser` validates and parses the group ID.
 4. A `CreateGroupCommand` object is created and executed.
@@ -362,8 +362,8 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 </box>
 
-How the `addstudenttogroup` command works:
-1. When the user enters an `addstudenttogroup` command, `LogicManager` passes it to `AddressBookParser`.
+How the `add_student_togroup` command works:
+1. When the user enters an `add_student_togroup` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates an `AddStudentToGroupCommandParser` to parse the command arguments.
 3. `AddStudentToGroupCommandParser` validates and parses the NUSNET ID and group ID.
 4. An `AddStudentToGroupCommand` object is created and executed.
@@ -675,13 +675,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to add a consultation by specifying student NUSNET ID, date_start_time, and date_end_time.
+1. User requests to add a consultation by specifying student's NUSNET ID, start date & time, and end date & time.
 
-2. AddressBook validates the student NUSNET ID, date, and times.
+2. AddressBook validates the NUSNET ID, dates, and times.
 
 3. AddressBook creates the consultation booking for the student.
 
-4. AddressBook shows success message with consultation details.
+4. AddressBook shows success message with consultation details and displays list of consultations to user.
 
     Use case ends.
 
@@ -689,64 +689,76 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Student NUSNET ID does not exist in the directory.
 
-  * 2a1. AddressBook shows error: `Student not found`.
+  * 2a1. AddressBook shows an error message.
 
        Use case ends.
 
 * 2b. End time is not after start time.
 
-    * 2b1. AddressBook shows error: `End time must be after start time`.
+    * 2b1. AddressBook shows an error message.
 
          Use case ends.
 
 * 2c. The new consultation overlaps with an existing one.
 
-    * 2c1. AddressBook shows error: `Time conflict with existing booking`.
+    * 2c1. AddressBook shows an error message.
 
          Use case ends.
 
 * 2d. A consultation with identical date and time already exists.
 
-    * 2d1. AddressBook shows error: `Duplicate consultation booking`.
+    * 2d1. AddressBook shows an error message.
 
          Use case ends.
+
+* 2d. Student already has an existing consultation.
+
+    * 2d1. AddressBook shows an error message.
+
+      Use case ends.
+
+* 4a. The consultation exceeds 3 hours in duration.
+
+    * 4a1. AddressBook displays a reminder message.
+
+      Use case ends.
+
+* 4b. The consultation is over or ongoing.
+
+    * 4b1. AddressBook displays a reminder message.
+
+      Use case ends.
 
 **Use case:** UC08 - Delete a consultation
 **User**: TA
 
 **MSS**
 
-1. User requests to delete a consultation by specifying student NUSNET ID, date_start_time, and date_end_time.  
+1. User requests to delete a consultation by specifying student's NUSNET ID.  
 
-2. AddressBook validates the student NUSNET ID, date, and times.  
+2. AddressBook validates the NUSNET ID.  
 
 3. AddressBook locates the consultation record that matches the provided details.  
 
-4. AddressBook deletes the consultation booking from the system.  
+4. AddressBook deletes the consultation from the system.  
 
-5. AddressBook shows success message confirming the deletion.  
+5. AddressBook shows success message confirming the deletion and displays list of consultations to user.  
 
     Use case ends.  
 
 **Extensions**
 
-* 2a. Student NUSNET ID does not exist in the directory.  
+* 2a. NUSNET ID does not exist in the directory.  
 
-  * 2a1. AddressBook shows error: `Student not found`.  
-
-       Use case ends.  
-
-* 3a. Consultation record with the specified details does not exist.  
-
-  * 3a1. AddressBook shows error: `Consultation not found`.  
+  * 2a1. AddressBook shows an error message.  
 
        Use case ends.  
 
-* 3b. Consultation list is empty.  
+* 3a. Student with specified NUSNET ID does not have a consultation.  
 
-  * 3b1. AddressBook shows error: `No consultations available to delete`.  
+  * 3a1. AddressBook shows an error message.  
 
-       Use case ends.  
+       Use case ends.
 
 **Use case:** UC09 - Mark attendance
 **User**: TA
@@ -1012,6 +1024,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+
+**Consultation terms**
+* **Ongoing**: A consultation is ongoing if it has a start time before the current time and a end time after the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1600` to `20251010 1800` is ongoing.)
+* **Over**: A consultation is over if its end time is before the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1400` to `20251010 1600` is over.)
+* **Overlap**: A consultation overlaps with another consultation if its start time is before the other consultation's end time and its end time is after the other consultation's start time.
+
+  (E.g. a consultation from `20251010 1400` to `20251010 1600` overlaps with a consultation from `20251010 1559` to `20251010 1759` but does not overlap with a consultation from `20251010 1600` to `20251010 1800`.)
 
 --------------------------------------------------------------------------------------------------------------------
 
