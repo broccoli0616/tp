@@ -436,9 +436,8 @@ Format: `create_group g/GROUPID`
 Examples:
 * `create_group g/T03` creates a new group with ID `T03`.
 * `create_group g/B05` creates a new group with ID `B05`.
-<p align="center">
-<img alt="image" src="https://github.com/user-attachments/assets/c3fa43d1-ec30-4710-8c32-9de9d43ed9b6" width="100%" />
-</p>
+
+![create group](images/creategroup.png)
 
 ### Adding a student to a group : `add_to_group`
 
@@ -456,9 +455,10 @@ Format: `add_to_group i/NUSNETID g/GROUPID`
 Examples:
 * `add_to_group i/E1234567 g/T03` move student with NUSNET ID `E1234567` from current group to group `T03`.
 * `add_to_group i/E2345678 g/B05` (assume group B05 does not exist initially) create group `B05` and move student `E2345678` to it.
-<p align="center">
-<img alt="image" src="https://github.com/user-attachments/assets/09d08a96-042a-445c-bc24-aac0a274deec" width="100%"/>
-</p>
+
+![add to group](images/addtogroupnewgroup.png)
+![add to group](images/addtogroupinvalid.png)
+
 ### Finding group members : `find_group`
 Finds all members in a specified tutorial group.
 
@@ -471,9 +471,9 @@ Format: `find_group g/GROUPID`
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
 * `find_group g/B05` displays all members in group `B05`.
-<p align="center">
-<img alt="image" src="https://github.com/user-attachments/assets/02069ac4-6e8f-4a86-8d22-1de95cf8b62c" width="100%"/>
-</p>
+
+![find group](images/findgroup.png)
+
 ---
 
 ## Clearing all entries : `clear`
