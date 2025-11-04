@@ -85,7 +85,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         try {
             nusnetid = ParserUtil.parseNusnetid(argMultimap.getValue(PREFIX_NUSNETID).get());
         } catch (ParseException e) {
-            errors.add("Nusnetid: " + e.getMessage());
+            errors.add("NUSNET ID: " + e.getMessage());
         }
 
         try {

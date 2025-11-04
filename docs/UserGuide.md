@@ -10,7 +10,7 @@ SoCTAssist is a desktop app designed specifically to help Teaching Assistants ma
 homework, attendance, and consultation sessions more efficiently.
 
 If you are a Teaching Assistant who can type fast, SoCTAssist can get your contact management tasks
-done faster than traditional Graphical User Interface(GUI) apps while still having the benefits of a GUI.
+done faster than traditional Graphical User Interface (GUI) apps while still having the benefits of a GUI.
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -41,7 +41,7 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
     ```
    
    A GUI similar to the below should appear in a few seconds. <br>
-   ![Ui](images/Ui.png)
+   ![Ui](images/Ui_launch.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -61,7 +61,7 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
 --------------------------------------------------------------------------------------------------------------------
 # Command Summary
 
-| Description                 | Format                                                                                     | Example                                                                              |
+| Action                      | Format                                                                                     | Example                                                                              |
 |-----------------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | **Display help message**    | `help`                                                                                     | `help`                                                                               |
 | **List students**           | `list`                                                                                     | `list`                                                                               |
@@ -91,8 +91,9 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
 
   > [!NOTE]
 > * Words in `UPPER_CASE` are parameters to be supplied by the user.  
->   e.g. in `add_student n/NAME`, `NAME` can be replaced as `add_student n/John Doe`.
+>   e.g. in `add_student n/NAME`, replace `NAME` with student's name to get `add_student n/John Doe`.
 > 
+> * **Command words** and **prefixes** are **case-sensitive**
 > * Items in square brackets are **optional**.  
 >   e.g. `n/NAME [p/PHONE]` can be used as `n/John Doe p/87415612` or simply `n/John Doe`.
 > 
@@ -100,46 +101,47 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
 >   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also valid.  
 >   ⚠️ But the **index parameter** must always come directly after the command word for commands that require an index.
 > 
-> * Extraneous parameters for commands that do not take parameters (like `help`, `list`, `exit`, and `clear`) will be ignored.  
+> * Extraneous parameters for commands that do not take parameters (`help`, `list`, `exit`, and `clear`) will be ignored.  
 >   e.g. `help 123` will still be interpreted as `help`.
 > 
 > * When using a PDF version, be careful copying commands that span multiple lines — spaces around line-breaks may be omitted.
 > 
-> * A student is considered a **duplicate** if their NUSNET ID, Telegram handle, Phone Number, or Email matches another existing student in SoCTAssist.
+> * A student is considered a **duplicate** if his NUSNET ID, Telegram handle, Phone Number, or Email matches another existing student in SoCTAssist.
 
 ## Parameter Constraints
 
-  * Name: May contain letters (including accents), digits, spaces, and quotes (\" and '), must not be blank, and must not contain '/' because '/' is used to identify different fields. And the name is at most 70 characters long. e.g. `John Doe`.
+  * Name: May contain letters (including accents), digits, spaces, and quotes (\" and '), must not be blank, and must not contain '/' because '/' is used to identify different fields. Name must be at most 70 characters long. e.g. `John Doe`.
   * NUSNET ID: An `E` (case-insensitive) followed by 7 digits, e.g. `E1234567`.
   * Telegram handle: Starts with `@` followed by at least 1 alphanumeric characters (underscores allowed), e.g. `@john_doe123`.
   * Phone number: A string of 3 to 30 digits can start with + to indicate country code, and only accept single phone number, e.g. `+6598765432`.
   * Email: A valid NUS email address in the format `localdomain@u.nus.edu`, e.g. `e1234567@u.nus.edu`.
   * Group ID: Starts with `T` or `B` (case-insensitive) followed by exactly two digits, e.g., `T01`, `B04`.
-  * Homework number: A positive integer between 1 to 13 inclusive.
+  * Homework number: An integer between 1 to 13 inclusive.
   * Homework status: One of `complete`, `incomplete`, or `late`.
-  * Attendance week: An integer between 2 to 13.
+  * Attendance week: An integer between 2 to 13 inclusive.
   * Attendance status: One of `present`, `absent`, or `excused`.
-  * DateTime: In the format `YYYYMMDD HHmm`, e.g. `20240915 1400` for 2:00 PM on 15 Sep 2024
-  * Index: A positive integer 1, 2, 3, …​
+  * Date & time: In the format `yyyyMMdd HHmm`, e.g. `20240915 1400` for 2:00 PM on 15 Sep 2024.
+  * Index: A positive integer, e.g. 1, 2, 3, …​
 </box>
 
 ## Viewing help : `help`
 
-Shows a message summarising all commands and displays a URL link that directs user to the help page.
-
-![help message](images/helpMessage.png)
+Shows a message summarising all commands and displays a URL link that directs user to the user guide.
 
 Format: `help`
+
+![help window](images/help_window.png)
 
 ---
 ## List Commands
 
-### Listing all persons : `list`
+### Listing all students : `list`
 
-Shows a list of all persons in the SoCTAssist.
+Shows a list of all students in the SoCTAssist.
 
 Format: `list`
 
+![list](images/list.png)
 
 ### Listing all consultations : `list_consult`
 
@@ -147,7 +149,9 @@ Displays list of all consultations in the SoCTAssist.
 
 Format: `list_consult`
 
-* Consultations will be sorted according to their start time, with the earliest consultation on top.
+![list_consult](images/list_consult.png)
+
+* Consultations will be sorted according to their start date & time, with the earliest consultation on top.
 
 Note:
 * After using `list_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
@@ -155,20 +159,19 @@ Note:
 * Users can use `list` command to return to the full student list view.
 
 ---
-## Person Commands
+## Student Commands
 
-### Adding a person: `add_student`
+### Adding a student: `add_student`
 
-Adds a person to the SoCTAssist.
+Adds a student to the SoCTAssist.
 
-Format: `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID  [p/PHONE_NUMBER] [e/EMAIL]`
+Format: `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID [p/PHONE_NUMBER] [e/EMAIL]`
 
 <box type="tip" seamless>
 
-**Tip:** Phone and email are optional. You can omit either or both when adding a person.
-* For duplicate checking, NUSNET ID, Telegram handle, Phone Number and Email must be unique across all persons in the SoCTAssist.
-* The paprameter constraints are listed [here](#Parameter-Constraints).
-* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, Phone Number and Email. Now the exact duplicated field will not be reported in the error message.Need to find out by the User manually.
+**Tip:** Phone and email are optional. You can omit either or both when adding a student.
+* The parameter constraints are listed [here](#Parameter-Constraints).
+* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, phone number and email. Currently, the exact duplicated field will not be reported in the error message. User needs to find the duplicated field manually.
 </box>
 
 Examples:
@@ -177,45 +180,46 @@ Examples:
 * `add_student n/Betsy Crow i/E1234562 p/1234567 t/@betsy g/T02  e/betsycrowe@u.nus.edu`
 
 
-### Editing a person : `edit_student`
+### Editing a student : `edit_student`
 
-Edits an existing person in the SoCTAssist.
+Edits an existing student in the SoCTAssist.
 
-Format: `edit_student INDEX [n/NAME] [i/NUSNETID]  [t/TELEGRAM] [p/PHONE] [e/EMAIL]`
+Format: `edit_student INDEX [n/NAME] [i/NUSNETID] [t/TELEGRAM] [p/PHONE] [e/EMAIL]`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the fields is provided to change the person's details.
+* Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer**, e.g. 1, 2, 3, …​
+* At least one of the fields must be provided to change the student's details.
 * Existing values will be updated to the input values.
 * You CANNOT use this command to change the tutorial group that this student belongs to. Use the `add_to_group` command instead.
-* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, Phone Number and Email. Now the exact duplicated field will not be reported in the error message.Need to find out by the User manually.
-* You can use p/ to remove the phone number or e/ to remove the email address of a person by leaving the parameter value empty.
-  e.g. `edit_student 2 p/` will remove the phone number of the 2nd person in the displayed person list.
-* The paprameter constraints are listed [here](#Parameter-Constraints).
+* The duplicate checking is done in the fields of NUSNET ID, Telegram handle, phone number and email. Currently, the exact duplicated field will not be reported in the error message. User needs to find the duplicated field manually.
+* You can use `p/` to remove the phone number or `e/` to remove the email address of a student by leaving the parameter value empty.
+* The parameter constraints are listed [here](#Parameter-Constraints).
 
 
 Examples:
-*  `edit_student 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu` respectively.
-*  `edit_student 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+*  `edit_student 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@u.nus.edu` respectively.
+*  `edit_student 2 n/Betsy Crower` Edits the name of the 2nd student to be `Betsy Crower`.
+*  `edit_student 2 p/` will remove the phone number of the 2nd student.
 
 
-### Deleting a person : `delete`
+### Deleting a student : `delete`
 
-Deletes the specified person from the SoCTAssist.
+Deletes the specified student from the SoCTAssist.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the **displayed** person list.
+* Deletes the student at the specified `INDEX`.
+* The index refers to the index number shown in the **displayed** student list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* If the user is in the list_consult view, use list to go back to the main view before using the `delete` command.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the displayed person list.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd student in the displayed student list.
+* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
 
 ### Finding students by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds students whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -223,7 +227,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 * Users can use `list` command to return to the full student list view.
 
@@ -239,27 +243,26 @@ Examples:
 
 Adds a homework assignment for the specified student or for all students.
 
-Format: `add_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT`
+Format: `add_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER`
 
 * Adds the homework with the given assignment number for the specified student.
 * If `i/all` is used, the homework is added for all students.
 * The user can add homework to all students as long as at least one of the students do not have the homework yet. (i.e., adding homework is **successful** if **no one has the homework or some of them have the homework**, and is unsuccessful if all students already have the homework).
 * The newly added homework will have a default status of `incomplete`.
 * The assignment number should be a positive integer between 1 to 13.
-* If adding homework for a specific student, NUSNET ID is used, which starts with E and has 7 integer numbers (e.g., E1234567), and it should not be blank.
-* The NUSNET ID and homework number **must be valid**.
+* If adding homework for a specific student, NUSNET ID is used. The NUSNET ID and homework number **must be valid**.
 * The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the homework has been added already.
 
 Examples:
 * `add_hw i/E1234567 a/1` adds assignment 1 for the student with NUSNET ID `E1234567`, if it is not already added.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9b06a90e-ac91-403f-bab7-a518f2676da6" alt="image1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/9b06a90e-ac91-403f-bab7-a518f2676da6" alt="image1" width="100%" />
 </p>
 
 * `add_hw i/all a/2` adds assignment 2 for all students.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/46677cf8-e493-4e13-8a13-762bdea83587" alt="image2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/46677cf8-e493-4e13-8a13-762bdea83587" alt="image2" width="100%" />
 </p>
 
 
@@ -268,25 +271,24 @@ Examples:
 
 Marks the homework status for the specified student.
 
-Format: `mark_hw i/NUSNETID a/ASSIGNMENT status/STATUS`
+Format: `mark_hw i/NUSNETID a/ASSIGNMENT_NUMBER status/STATUS`
 
 * Marks the specified assignment for the given student with the specified status. The same homework can be marked for several times, and the most recent status will be saved.
 * The assignment number should be a positive integer between 1 to 13.
 * The assignment must exist for the student.
 * The `STATUS` can be one of the following: `complete`, `incomplete`, or `late`.
-* The NUSNET ID, homework number and status **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID, homework number and status **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the homework can be marked (i.e., whether the homework exists for the student).
 
 Examples:
 * `mark_hw i/E1234567 a/1 status/complete` marks assignment 1 as complete for student `E1234567`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d17b54dc-421b-4cef-beb0-435b3b2551b7" alt="mark_hw1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/d17b54dc-421b-4cef-beb0-435b3b2551b7" alt="mark_hw1" width="100%" />
 </p>
 
 * `mark_hw i/E1234568 a/2 status/late` marks assignment 2 as late for student `E1234568`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/699fcea0-d1e1-443c-b391-5006f29e8d8a" alt="mark_hw2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/699fcea0-d1e1-443c-b391-5006f29e8d8a" alt="mark_hw2" width="100%" />
 </p>
 
 
@@ -294,25 +296,24 @@ Examples:
 
 Deletes the homework for the specified student or for all students.
 
-Format: `delete_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT`
+Format: `delete_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER`
 
 * Deletes the homework with the given assignment number for the specified student. 
 * The assignment number should be a positive integer between 1 to 13, and the assignment must exist for the student.
 * If `i/all` is used, the homework is deleted for all students.
 * The user can add homework to all students as long as at least one of the students have the homework. (i.e., deleting homework is successful if everyone has the homework or some of them have the homework, and is unsuccessful if none of the students has the homework).
-* The NUSNET ID and homework number **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID and homework number **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the student has the homework.
 
 Examples:
 * `delete_hw i/E1234567 a/1` deletes assignment 1 for the student with NUSNET ID `E1234567`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/707f5907-f158-4ce0-9183-bd4666475680" alt="delete_hw1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/707f5907-f158-4ce0-9183-bd4666475680" alt="delete_hw1" width="100%" />
 </p>
 
 * `delete_hw i/all a/2` deletes assignment 2 for all students.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0671e0aa-fdc1-432e-ab9a-7f589519be3a" alt="delete_hw2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/0671e0aa-fdc1-432e-ab9a-7f589519be3a" alt="delete_hw2" width="100%" />
 </p>
 
 > [!IMPORTANT]
@@ -328,16 +329,18 @@ Marks the attendance status for the specified student and week.
 Format: `mark_attendance i/NUSNETID w/WEEK status/ATTENDANCE_STATUS`
 
 * Marks attendance for the given student and week.
-* week number must between 2 to 13.
+* Week number must between 2 to 13.
 * NUSNET ID can start with E and has 7 numbers, and it should not be blank.
 * The `ATTENDANCE_STATUS` can be one of the following: `present`, `absent`, or `excused`.
-* The NUSNET ID, week number and status **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID, week number and status **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, and lastly the existence of the student.
 
 Examples:
 * `mark_attendance i/E1234567 w/3 status/present` marks student `E1234567` as present for week 3.
+<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/77fc2a90-a3de-4cf6-8066-be36afb211bf" />
+
 * `mark_attendance i/E2345678 w/5 status/absent` marks student `E2345678` as absent for week 5.
+<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/a7951e3f-465f-44c3-8241-c5796c093361" />
 
 ---
 
@@ -358,7 +361,11 @@ Format: `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`
 
 Examples:
 * `mark_all_attendance g/T01 w/3 status/present` marks all students in group T01 as present for week 3.
-* `mark_all_attendance g/B04 w/5 status/absent` marks all students in group B04 as absent for week 5.
+<img width="3199" height="1895" alt="image" src="https://github.com/user-attachments/assets/43996d42-0818-4405-93bd-198feb5c8490" />
+
+* `mark_all_attendance g/T01 w/5 status/absent` marks all students in group T01 as absent for week 5.
+<img width="3198" height="1895" alt="image" src="https://github.com/user-attachments/assets/df045519-b799-47bd-8e05-00c08e0e030d" />
+
 
 ---
 ## Consultation Commands
@@ -369,20 +376,25 @@ Adds a consultation session for the specified student.
 
 Format: `add_consult i/NUSNETID from/DATE_TIME to/DATE_TIME`
 
-* Both start (`from`) and end (`to`) times **must be in `YYYYMMDD HHmm` format**.
+![add_consult](images/add_consult.png)
+
+* Both start (`from`) and end (`to`) times **must be in `yyyyMMdd HHmm` format**.
 * The start time must be **earlier** than the end time**.
 * The NUSNET ID, start time and end time **must be valid**.
 * The parameter constraints are listed [here](#Parameter-Constraints).
-* If a consultation already exists for the student, it will be unavailable to add a new consultation to the student.
-* If the consultation time overlaps with an existing consultation for another student, it will be unavailable to add the new consultation.
+* A consultation cannot be added to a student who already has an existing consultation. (i.e. Each student can only have one assigned consultation)
+* A consultation cannot overlap with other existing consultations. (i.e. Students can only have one-to-one consultations)
 
 Examples:
-* `add_consult i/E1234567 from/20240915 1400 to/20240915 1500` adds a consultation from 2–3PM on 15 Sep 2024 for student `E1234567`.
+* `add_consult i/E1234567 from/20251010 1400 to/20251010 1600` adds a consultation from 2–4PM on 10 Oct 2025 for student `E1234567`.
 * `add_consult i/E2345678 from/20240920 1000 to/20240920 1100` adds a consultation from 10–11AM on 20 Sep 2024 for student `E2345678`.
   
 Note:
-* After using `add_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
+* After using `add_consult` command, user will be brought to consultation list view. Index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
 * Users are highly recommended to use `list` command to find out the global index of the student before using `edit_student` or `delete` commands.
+* Upon returning to student list view, newly added consultation will be reflected under the student.
+
+![student_list_with_consult_box](images/student_list_with_consult_box.png)
 
 ### Deleting a consultation : `delete_consult`
 
@@ -399,7 +411,7 @@ Examples:
 * `delete_consult i/E2345678` deletes consultation for student `E2345678`.
 
 Note:
-* After using `delete_consult` command, index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
+* After using `delete_consult` command, user will be brought to consultation list view. Index in `edit_student` and `delete` commands will refer to the global index of the student (index displayed after `list` command).
 * Users are highly recommended to use `list` command to find out the global index of the student before using `edit_student` or `delete` commands.
 
 ---
@@ -418,6 +430,8 @@ Format: `create_group g/GROUPID`
 Examples:
 * `create_group g/T03` creates a new group with ID `T03`.
 * `create_group g/B05` creates a new group with ID `B05`.
+<img width="3198" height="1897" alt="image" src="https://github.com/user-attachments/assets/c3fa43d1-ec30-4710-8c32-9de9d43ed9b6" />
+
 
 ### Adding a student to a group : `add_to_group`
 
@@ -436,6 +450,8 @@ Examples:
 * `add_to_group i/E1234567 g/T03` move student with NUSNET ID `E1234567` from current group to group `T03`.
 * `add_to_group i/E2345678 g/B05` (assume group B05 does not exist initially) create group `B05` and move student `E2345678` to it.
 
+<img width="3199" height="1892" alt="image" src="https://github.com/user-attachments/assets/09d08a96-042a-445c-bc24-aac0a274deec" />
+
 ### Finding group members : `find_group`
 Finds all members in a specified tutorial group.
 
@@ -448,6 +464,7 @@ Format: `find_group g/GROUPID`
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
 * `find_group g/B05` displays all members in group `B05`.
+<img width="3199" height="1900" alt="image" src="https://github.com/user-attachments/assets/02069ac4-6e8f-4a86-8d22-1de95cf8b62c" />
 
 ---
 
@@ -566,6 +583,22 @@ Furthermore, certain edits can cause the SoCTAssist to behave in unexpected ways
 * **NUSNETID**: A unique identifier assigned to each student by the National University of Singapore (NUS) during matriculation. It is used for logging into various NUS systems.
 * **NUS email**: The official email address assigned to each student by NUS, typically in the format `<NUSNETID>@u.nus.edu`.
 * **Tutorial Group**: A smaller group of students within a course. Group IDs usually follow the format `TXX` or `BXX`, where `XX` represent 2 digits.
+* **Complete**: The student has submitted the homework on time.
+* **Incompleted**: The student has not submitted the homework yet. When the user creates the homework, it is marked as incomplete by default.
+* **Late**: The student has submitted the homework, but has passed the deadline of the homework.
+* **Present**: The student is present for the tutorial on that week.
+* **Excused**: The student did not come for the tutorial, but has a valid reason (e.g., on MC, has competition)
+* **Absent**: The student did not come for the tutorial, and does not have a valid reason.
+* **Ongoing**: A consultation is ongoing if it has a start time before the current time and a end time after the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1600` to `20251010 1800` is ongoing.)
+* **Over**: A consultation is over if its end time is before the current time.
+
+  (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1400` to `20251010 1600` is over.)
+* **Overlap**: A consultation overlaps with another consultation if its start time is before the other consultation's end time and its end time is after the other consultation's start time.
+
+  (E.g. a consultation from `20251010 1400` to `20251010 1600` overlaps with a consultation from `20251010 1559` to `20251010 1759` but does not overlap with a consultation from `20251010 1600` to `20251010 1800`.)
+
 * **CLI**: Command Line Interface. A text-based interface used to interact with software applications by typing commands.
 * **Week**: There are 13 weeks in each academic semester in NUS, and tutorial starts in Week 3.
 * **Assessment/Homework**: Work that needs to be done and submitted by mentees, graded by tutors.

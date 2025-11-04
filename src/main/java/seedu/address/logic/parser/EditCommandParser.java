@@ -75,7 +75,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             try {
                 editPersonDescriptor.setNusnetid(ParserUtil.parseNusnetid(argMultimap.getValue(PREFIX_NUSNETID).get()));
             } catch (ParseException e) {
-                errors.add("Nusnetid: " + e.getMessage());
+                errors.add("NUSNET ID: " + e.getMessage());
             }
         }
         // Telegram
