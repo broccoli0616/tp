@@ -583,12 +583,12 @@ Furthermore, certain edits can cause the SoCTAssist to behave in unexpected ways
 * **NUSNETID**: A unique identifier assigned to each student by the National University of Singapore (NUS) during matriculation. It is used for logging into various NUS systems.
 * **NUS email**: The official email address assigned to each student by NUS, typically in the format `<NUSNETID>@u.nus.edu`.
 * **Tutorial Group**: A smaller group of students within a course. Group IDs usually follow the format `TXX` or `BXX`, where `XX` represent 2 digits.
-* **complete**: The student has submitted the homework on time.
-* **incompleted**: The student has not submitted the homework yet. When the user creates the homework, it is marked as incomplete by default.
-* **late**: The student has submitted the homework, but has passed the deadline of the homework.
-* **present**: The student is present for the tutorial on that week.
-* **excused**: The student did not come for the tutorial, but has a valid reason (e.g., on MC, has competition)
-* **absent**: The student did not come for the tutorial, and does not have a valid reason.
+* **Complete**: The student has submitted the homework on time.
+* **Incompleted**: The student has not submitted the homework yet. When the user creates the homework, it is marked as incomplete by default.
+* **Late**: The student has submitted the homework, but has passed the deadline of the homework.
+* **Present**: The student is present for the tutorial on that week.
+* **Excused**: The student did not come for the tutorial, but has a valid reason (e.g., on MC, has competition)
+* **Absent**: The student did not come for the tutorial, and does not have a valid reason.
 * **Ongoing**: A consultation is ongoing if it has a start time before the current time and a end time after the current time.
 
   (E.g. if the current time is `20251010 1700`, a consultation from `20251010 1600` to `20251010 1800` is ongoing.)
