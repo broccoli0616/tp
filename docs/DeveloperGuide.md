@@ -385,7 +385,7 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `FindByGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `FindGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
 
 </box>
 
@@ -395,9 +395,10 @@ How the `find_group` command works:
 3. `FindGroupCommandParser` validates and parses the group ID.
 4. A `FindGroupCommand` object is created and executed.
 5. If the group ID is valid, and the group exist in the address book, `FindGroupCommand` retrieves the list of students belonging to the specified group from the `Model`.
-6. The filtered student list in the `Model` is updated to only include students from the specified group.
+6. The filtered student list in the `Model` is updated to **only** include students from the specified group.
 7. The updated filtered student list is displayed to the user in the UI.
-8. If the group ID is invalid or the group does not exist, an error message is shown to the user.
+8. If the group ID is invalid, an error message is shown to the user.
+9. If the group does not exist, inform the user that no such group exists.
 9. No change to the address book is made.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -914,7 +915,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 * 3a. The group does not exist.
-    * 3a1. System shows error message, saying group does not exist.
+    * 3a1. System informs the user that no such group exists.
   
       Use case ends.
 
