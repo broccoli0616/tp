@@ -358,17 +358,17 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `AddStudentToGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `AddToGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
 
 </box>
 
-How the `add_student_togroup` command works:
-1. When the user enters an `add_student_togroup` command, `LogicManager` passes it to `AddressBookParser`.
-2. `AddressBookParser` creates an `AddStudentToGroupCommandParser` to parse the command arguments.
-3. `AddStudentToGroupCommandParser` validates and parses the NUSNET ID and group ID.
-4. An `AddStudentToGroupCommand` object is created and executed.
-5. `AddStudentToGroupCommand` checks if the specified student exist.
-6. If the student exists, `AddStudentToGroupCommand` checks if the specified group already exist.
+How the `add_to_group` command works:
+1. When the user enters an `add_to_group` command, `LogicManager` passes it to `AddressBookParser`.
+2. `AddressBookParser` creates an `AddToGroupCommandParser` to parse the command arguments.
+3. `AddToGroupCommandParser` validates and parses the NUSNET ID and group ID.
+4. An `AddToGroupCommand` object is created and executed.
+5. `AddToGroupCommand` checks if the specified student exist.
+6. If the student exists, `AddToGroupCommand` checks if the specified group already exist.
 7. Create an updated student object with the new group ID.
 8. If the group exists, the student is added to the specified group.
 9. Else, the group is created and the student is added to the newly created group.
@@ -385,16 +385,16 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `FindStudentByGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `FindByGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
 
 </box>
 
 How the `find_group` command works:
 1. When the user enters a `find_group` command, `LogicManager` passes it to `AddressBookParser`.
-2. `AddressBookParser` creates a `FindStudentByGroupCommandParser` to parse the command arguments.
-3. `FindStudentByGroupCommandParser` validates and parses the group ID.
-4. A `FindStudentByGroupCommand` object is created and executed.
-5. If the group ID is valid, and the group exist in the address book, `FindStudentByGroupCommand` retrieves the list of students belonging to the specified group from the `Model`.
+2. `AddressBookParser` creates a `FindGroupCommandParser` to parse the command arguments.
+3. `FindGroupCommandParser` validates and parses the group ID.
+4. A `FindGroupCommand` object is created and executed.
+5. If the group ID is valid, and the group exist in the address book, `FindGroupCommand` retrieves the list of students belonging to the specified group from the `Model`.
 6. The filtered student list in the `Model` is updated to only include students from the specified group.
 7. The updated filtered student list is displayed to the user in the UI.
 8. If the group ID is invalid or the group does not exist, an error message is shown to the user.
@@ -1289,15 +1289,15 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 **Summary of Expected Results**
 
-| Test Case | Command | Expected Outcome |
-|------------|----------|------------------|
-| 1 | `delete_hw i/E1234567 a/1` | ✅ Homework 1 deleted from student E1234567 |
-| 2 | `delete_hw i/all a/2` | ✅ Homework 2 deleted from all students |
-| 3 | `delete_hw i/E0000000 a/1` | ❌ Student not found |
-| 4 | `delete_hw a/1` | ❌ Missing NUSNET ID |
-| 5 | `delete_hw i/E1234567 a/100` | ❌ Homework ID out of range |
-| 6 | `delete_hw i/E1234567 a/3` | ❌ Homework does not exist |
-| 7 | `delete_hw i/E1234567 i/E7654321 a/1` | ❌ Duplicate prefixes |
+| Test Case  | Command                               | Expected Outcome                           |
+|------------|---------------------------------------|--------------------------------------------|
+| 1          | `delete_hw i/E1234567 a/1`            | ✅ Homework 1 deleted from student E1234567 |
+| 2          | `delete_hw i/all a/2`                 | ✅ Homework 2 deleted from all students     |
+| 3          | `delete_hw i/E0000000 a/1`            | ❌ Student not found                        |
+| 4          | `delete_hw a/1`                       | ❌ Missing NUSNET ID                        |
+| 5          | `delete_hw i/E1234567 a/100`          | ❌ Homework ID out of range                 |
+| 6          | `delete_hw i/E1234567 a/3`            | ❌ Homework does not exist                  |
+| 7          | `delete_hw i/E1234567 i/E7654321 a/1` | ❌ Duplicate prefixes                       |
 
 ### Mark homework### Mark homework
 1. Mark homework as completed for a single student  
@@ -1387,13 +1387,29 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 **Summary of Expected Results**
 
-| Test Case | Command | Expected Outcome |
-|------------|----------|------------------|
-| 1 | `mark_hw i/E1234567 a/1 status/completed` | ✅ Homework 1 marked completed |
-| 2 | `mark_hw i/E1234567 a/1 status/incomplete` | ✅ Homework 1 marked incomplete |
-| 3 | `mark_hw i/E1234567 a/2 status/late` | ✅ Homework 2 marked late |
-| 4 | `mark_hw i/E0000000 a/1 status/completed` | ❌ Invalid NUSNET ID |
-| 5 | `mark_hw i/E1234567 a/3 status/completed` | ❌ Homework does not exist |
-| 6 | `mark_hw i/E1234567 a/1 status/done` | ❌ Invalid status |
-| 7 | `mark_hw i/E1234567 a/1` | ❌ Missing status parameter |
-| 8 | `mark_hw i/E1234567 i/E7654321 a/1 status/completed` | ❌ Duplicate prefixes |
+| Test Case | Command                                              | Expected Outcome               |
+|-----------|------------------------------------------------------|--------------------------------|
+| 1         | `mark_hw i/E1234567 a/1 status/completed`            | ✅ Homework 1 marked completed  |
+| 2         | `mark_hw i/E1234567 a/1 status/incomplete`           | ✅ Homework 1 marked incomplete |
+| 3         | `mark_hw i/E1234567 a/2 status/late`                 | ✅ Homework 2 marked late       |
+| 4         | `mark_hw i/E0000000 a/1 status/completed`            | ❌ Invalid NUSNET ID            |
+| 5         | `mark_hw i/E1234567 a/3 status/completed`            | ❌ Homework does not exist      |
+| 6         | `mark_hw i/E1234567 a/1 status/done`                 | ❌ Invalid status               |
+| 7         | `mark_hw i/E1234567 a/1`                             | ❌ Missing status parameter     |
+| 8         | `mark_hw i/E1234567 i/E7654321 a/1 status/completed` | ❌ Duplicate prefixes           |
+
+
+## **Appendix: Planned Enhancement**
+This section outlines potential future enhancements for the application that could improve its functionality, usability, or performance. These enhancements are not part of the current scope but may be considered for future development. \\
+Team size: 5
+
+
+1. **Remove deprecated `create_group` command**: Since group creation is now integrated into the `add_student` and `add_to_group` command, the standalone `create_group` command can be removed to streamline the command set and reduce redundancy.
+1. **Enhance `mark_attendance` and `mark_all_attendance` command with attendance status `unmark`**: Introduce an `unmark` status option to allow TAs to easily revert a student's attendance for a specific week if they accidentally marked them as present, absent, or excused. For example, if they accidentally marked a student as present in week 5, they can now use `mark_attendance i/E1234567 w/5 status/unmark` to clear the attendance for week 5 and the icon will turn grey.
+1. **Improve 'find' command with advanced filters**: Enable users to search for students using partial name. For example, searching for "Alex" would return both "Alex Yeoh" and "Alexander Tan".
+1. **Error message enhancements**: Show the specific field that caused the error in error messages to help users quickly identify and correct the missing/duplicated field. For example, if a duplicate email is entered, the error message could specify "Duplicate email format in field: email".
+1. **Enhance `add_consult`commands by allowing one student to book multiple consultation slot**: Allow students to book multiple consultation slots instead of being limited to one. This would accommodate students with varying schedules and needs.
+1. **Enhance `add_consult` commands by allowing multiple student to book the same consultation slot**: Allow multiple students to book the same consultation slot, enabling group consultations.
+1. **Enhance `delete_hw i/all a/<hw id>` commands by adding confirmation prompt**: Before deleting a homework assignment for all students, prompt the user for confirmation to prevent accidental deletions. For example, after entering the delete command, the system could ask "Are you sure you want to delete homework for all student (yes/no)".
+1. **Reduce command word length**: Shorten command words to make them quicker to type. For example, change `add_student` to `as`, `mark_attendance` to `ma`, `mark_all_attendance` to `maa` and `delete_hw` to `dh`.
+1. **Enhance `add_to_group` command by allowing adding one student into multiple groups**: For example, a TA can teach both CS2030S and CS2040S, and the same student can be added to both groups.
