@@ -1446,44 +1446,44 @@ This section provides step-by-step, comprehensive instructions for performing **
 1. Mark attendance for a single student  
    1. Setup: Ensure that there is at least one student in the system with NUSNET ID `E1234567`.  
    2. Execute the command:  
-      `mark_attendance i/E1234567 w/2 a/present`  
+      `mark_attendance i/E1234567 w/2 status/present`  
    3. **Expected:**  
    - Success message is displayed.
    - The student’s attendance record now shows **present** for week **2**.
 
-2. Mark attendance for all students  
-   1. Setup: Ensure multiple students are present in the system.  
-   2. Execute the command:  
-      `mark_attendance i/all w/2 a/absent`  
-   3. **Expected:**
-    - Success message is displayed.
-    - All students’ attendance records now show **absent** for week **2**.
-
-3. Mark attendance (Student not found)
+2. Mark attendance (Student not found)
    1. Setup: Ensure that there is no student with the NUSNET ID `E0000000` in the system.
    2. Execute the command:
-      `mark_attendance i/E0000000 w/2 a/present`
+      `mark_attendance i/E0000000 w/2 status/present`
    3. **Expected:**
    - Error message is displayed.
 
-4. Mark attendance (Invalid week)
+3. Mark attendance (Invalid week)
    1. Ensure that there is a student in the system with NUSNET ID `E1234567`.
    2. Execute the command:
-      `mark_attendance i/E1234567 w/20 a/present`
+      `mark_attendance i/E1234567 w/20 status/present`
    2. **Expected:**
    - Error message is displayed.
 
-5. Mark attendance (Invalid status)
+4. Mark attendance (Invalid status)
    1. Ensure that there is a student in the system with NUSNET ID `E1234567`.
    2. Execute the command:
-      `mark_attendance i/E1234567 w/2 a/late`
+      `mark_attendance i/E1234567 w/2 status/late`
    3. **Expected:**
    - Error message is displayed.
 
+### Mark All Attendance
+1. Mark attendance for all students
+    1. Setup: Ensure multiple students are present in the system.
+    2. Execute the command:  
+       `mark_attendance i/all w/2 status/absent`
+    3. **Expected:**
+    - Success message is displayed.
+    - All students’ attendance records now show **absent** for week **2**.
 
 ### Add Consultation
 1. Add a consultation for a student  
-   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`.  
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567` that has no consultation.  
    2. Execute the command:  
       `add_consult i/E1234567 from/20251010 1400 to/20251010 1500`  
    3. **Expected:**  
@@ -1505,7 +1505,7 @@ This section provides step-by-step, comprehensive instructions for performing **
       - Error message is displayed.
 
 4. Add a consultation (Overlapping consultation)  
-   1. Setup: Ensure that there is a student in the system with a consultation from `20251010 1400` to `20251010 1500`. Ensure that there is a another student in the system with NUSNET ID `E1234569`.
+   1. Setup: Ensure that there is a student in the system with a consultation from `20251010 1400` to `20251010 1500`. Ensure that there is a another student in the system with NUSNET ID `E1234569` without consultation.
    2. Execute the command:  
       `add_consult i/E1234569 from/20251010 1430 to/20251010 1530`  
    3. **Expected:**  
@@ -1550,7 +1550,8 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 ### Create Group
 1. Create a new group  
-   1. Execute the command:  
+   1. Ensure that group `T01` does not exist.
+   2. Execute the command:  
       `create_group g/T01`  
    2. **Expected:**  
    - Success message is displayed.
@@ -1564,7 +1565,7 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 ### Add Student to Group
 1. Add a student to an existing group  
-   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`, and that group `T01` exists.
+   1. Setup: Ensure that there is a student in the system with NUSNET ID `E1234567`.
    2. Execute the command:  
       `add_to_group i/E1234567 g/T01`  
    3. **Expected:**  
@@ -1576,6 +1577,13 @@ This section provides step-by-step, comprehensive instructions for performing **
    2. Execute the command:  
       `add_to_group i/E0000000 g/T01`  
    3. **Expected:**  
+   - Error message is displayed.
+
+3. Add student to group (Group already contains the student)
+   1. Setup: Ensure that there is a student with the NUSNET ID `E1234567` that is in group `T01`.
+   2. Execute the command:
+      `add_to_group i/E1234567 g/T01`
+   3. **Expected:**
    - Error message is displayed.
 
 ### Find Students by Group
