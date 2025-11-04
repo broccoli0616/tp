@@ -769,6 +769,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
        Use case ends.
 
 **Use case:** UC09 - Mark attendance
+
 **Actor**: TA
 
 **MSS**
@@ -798,7 +799,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
          Use case ends.
 
 
-**Use case: Mark all attendance** <br>
+**Use case: Mark all attendance**
 
 **Actor: TA**
 
@@ -1034,9 +1035,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 ### Glossary
+**Homework terms**
+* **complete**: The student has submitted the homework on time.
+* **incompleted**: The student has not submitted the homework yet. When the user creates the homework, it is marked as incomplete by default.
+* **late**: The student has submitted the homework, but has passed the deadline of the homework.
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+**Attendance terms**
+* **present**: The student is present for the tutorial on that week.
+* **excused**: The student did not come for the tutorial, but has a valid reason (e.g., on MC, has competition)
+* **absent**: The student did not come for the tutorial, and does not have a valid reason.
 
 **Consultation terms**
 * **Ongoing**: A consultation is ongoing if it has a start time before the current time and a end time after the current time.
