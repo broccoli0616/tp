@@ -237,8 +237,8 @@ How the `mark_attendance` command works:
 2. `AddressBookParser` creates a `MarkAttendanceCommandParser` to parse the command arguments.
 3. `MarkAttendanceCommandParser` validates and parses the NUSNET ID, week number, and attendance status.
 4. A `MarkAttendanceCommand` object is created and executed.
-5. `MarkAttendanceCommand` checks whether the specified student exits.
-6. If exits, the attendance status of the student in the specified week is updated to the status.
+5. `MarkAttendanceCommand` checks whether the specified student exists.
+6. If exists, the attendance status of the student in the specified week is updated to the status.
 7. The updated address book is saved to storage.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -1060,7 +1060,7 @@ This section provides step-by-step, comprehensive instructions for performing **
    * Double-click the `soctassist.jar` file to start the application.
    * Open a terminal or command prompt in the folder containing the .jar file.
    * Run the following command:
-     * `java -jar socassisst.jar`
+     * `java -jar soctassist.jar`
    * **Expected Result:**
      * The main GUI should appear with a **set of sample data** (e.g., sample students).
      * The window size and position may initially not be optimized.
@@ -1085,7 +1085,7 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 ### **2. Data Management Tests**
 
-#### **2.1 Deleting a Person (Functional Test)**
+#### **2.1 Deleting a person (Functional Test)**
 
 1. **Preparation:**
 
@@ -1431,7 +1431,7 @@ Team size: 5
 1. **Enhance `mark_attendance` and `mark_all_attendance` command with attendance status `unmark`**: Introduce an `unmark` status option to allow TAs to easily revert a student's attendance for a specific week if they accidentally marked them as present, absent, or excused. For example, if they accidentally marked a student as present in week 5, they can now use `mark_attendance i/E1234567 w/5 status/unmark` to clear the attendance for week 5 and the icon will turn grey.
 1. **Improve 'find' command with advanced filters**: Enable users to search for students using partial name. For example, searching for "Alex" would return both "Alex Yeoh" and "Alexander Tan".
 1. **Error message enhancements**: Show the specific field that caused the error in error messages to help users quickly identify and correct the missing/duplicated field. For example, if a duplicate email is entered, the error message could specify "Duplicate email format in field: email".
-1. **Enhance `add_consult`commands by allowing one student to book multiple consultation slot**: Allow students to book multiple consultation slots instead of being limited to one. This would accommodate students with varying schedules and needs.
+1. **Enhance `add_consult` commands by allowing one student to book multiple consultation slot**: Allow students to book multiple consultation slots instead of being limited to one. This would accommodate students with varying schedules and needs.
 1. **Enhance `add_consult` commands by allowing multiple student to book the same consultation slot**: Allow multiple students to book the same consultation slot, enabling group consultations.
 1. **Enhance `delete_hw i/all a/<hw id>` commands by adding confirmation prompt**: Before deleting a homework assignment for all students, prompt the user for confirmation to prevent accidental deletions. For example, after entering the delete command, the system could ask "Are you sure you want to delete homework for all student (yes/no)".
 1. **Reduce command word length**: Shorten command words to make them quicker to type. For example, change `add_student` to `as`, `mark_attendance` to `ma`, `mark_all_attendance` to `maa` and `delete_hw` to `dh`.
