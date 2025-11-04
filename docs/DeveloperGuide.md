@@ -196,7 +196,7 @@ How the `deletehomework` command works:
 
 ### Mark Homework Feature
 
-The mark homework feature allows users to update the status (e.g., `complete`, `incomplete`, 'late') of a homework assignment for a specific student.
+The mark homework feature allows users to update the status (e.g., `complete`, `incomplete`, `late`) of a homework assignment for a specific student.
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking homework:
 
