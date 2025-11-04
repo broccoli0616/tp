@@ -213,7 +213,7 @@ How the `markhomework` command works:
 2. `AddressBookParser` creates a `MarkHomeworkCommandParser` to parse the command arguments.
 3. `MarkHomeworkCommandParser` validates and parses the NUSNET ID, assignment ID, and status.
 4. A `MarkHomeworkCommand` object is created and executed.
-5.`MarkHomeworkCommand` checks whether the specified homework exists for the student.
+5. `MarkHomeworkCommand` checks whether the specified homework exists for the student.
 6. If found, the homework’s status is updated to the new value.
 7. The updated address book is saved to storage.
 
