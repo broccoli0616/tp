@@ -450,13 +450,16 @@ Format: `add_to_group i/NUSNETID g/GROUPID`
 * If the group exists, the student will be added to that new group.
 * Student cannot be moved to the same group they are already in; an error message will be shown in such cases.
 * Since a student can only belong to one group at a time, adding them to a new group will remove them from their previous group.
-* The NUSNET ID and group ID **must be valid**. For group ID, refer [here](#creating-a-group--create_group).
+* The NUSNET ID and group ID **must be valid**. For group ID, refer [here](#creating-a-group).
 
 Examples:
 * `add_to_group i/E1234567 g/T03` move student with NUSNET ID `E1234567` from current group to group `T03`.
 * `add_to_group i/E2345678 g/B05` (assume group B05 does not exist initially) create group `B05` and move student `E2345678` to it.
 
+* Successfully adding student to a group:
 ![add to group](images/addtogroupnewgroup.png)
+
+* Cannot add student to the same group they are already in:
 ![add to group](images/addtogroupinvalid.png)
 
 ### Finding group members : `find_group`
@@ -467,6 +470,7 @@ Format: `find_group g/GROUPID`
 * Displays all students belonging to the specified group.
 * The group ID **must be valid**.
 * Users can use `list` command to return to the full student list view.
+* If the specified group has no members, a message will be shown.
 
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
