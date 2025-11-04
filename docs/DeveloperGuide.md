@@ -68,7 +68,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/java/seedu/address/MainApp.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -79,7 +79,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -340,7 +340,7 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 </box>
 
 How the `create_group` command works:
-1. When the user enters a `creat_egroup` command, `LogicManager` passes it to `AddressBookParser`.
+1. When the user enters a `create_group` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `CreateGroupCommandParser` to parse the command arguments.
 3. `CreateGroupCommandParser` validates and parses the group ID.
 4. A `CreateGroupCommand` object is created and executed.
@@ -385,7 +385,7 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `FindByGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `FindGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
 
 </box>
 
@@ -395,9 +395,10 @@ How the `find_group` command works:
 3. `FindGroupCommandParser` validates and parses the group ID.
 4. A `FindGroupCommand` object is created and executed.
 5. If the group ID is valid, and the group exist in the address book, `FindGroupCommand` retrieves the list of students belonging to the specified group from the `Model`.
-6. The filtered student list in the `Model` is updated to only include students from the specified group.
+6. The filtered student list in the `Model` is updated to **only** include students from the specified group.
 7. The updated filtered student list is displayed to the user in the UI.
-8. If the group ID is invalid or the group does not exist, an error message is shown to the user.
+8. If the group ID is invalid, an error message is shown to the user.
+9. If the group does not exist, inform the user that no such group exists.
 9. No change to the address book is made.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -928,7 +929,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 * 3a. The group does not exist.
-    * 3a1. SoCTAssist shows error message, saying group does not exist.
+    * 3a1. SoCTAssist informs the user that no such group exists.
   
       Use case ends.
 
