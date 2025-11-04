@@ -10,7 +10,7 @@ SoCTAssist is a desktop app designed specifically to help Teaching Assistants ma
 homework, attendance, and consultation sessions more efficiently.
 
 If you are a Teaching Assistant who can type fast, SoCTAssist can get your contact management tasks
-done faster than traditional Graphical User Interface(GUI) apps while still having the benefits of a GUI.
+done faster than traditional Graphical User Interface (GUI) apps while still having the benefits of a GUI.
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -93,6 +93,7 @@ done faster than traditional Graphical User Interface(GUI) apps while still havi
 > * Words in `UPPER_CASE` are parameters to be supplied by the user.  
 >   e.g. in `add_student n/NAME`, replace `NAME` with student's name to get `add_student n/John Doe`.
 > 
+> * **Command words** and **prefixes** are **case-sensitive**
 > * Items in square brackets are **optional**.  
 >   e.g. `n/NAME [p/PHONE]` can be used as `n/John Doe p/87415612` or simply `n/John Doe`.
 > 
@@ -164,12 +165,11 @@ Note:
 
 Adds a student to the SoCTAssist.
 
-Format: `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID  [p/PHONE_NUMBER] [e/EMAIL]`
+Format: `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID [p/PHONE_NUMBER] [e/EMAIL]`
 
 <box type="tip" seamless>
 
 **Tip:** Phone and email are optional. You can omit either or both when adding a student.
-* For duplicate checking, NUSNET ID, Telegram handle, phone number and email address must be unique across all students in the SoCTAssist.
 * The parameter constraints are listed [here](#Parameter-Constraints).
 * The duplicate checking is done in the fields of NUSNET ID, Telegram handle, phone number and email. Currently, the exact duplicated field will not be reported in the error message. User needs to find the duplicated field manually.
 </box>
@@ -184,7 +184,7 @@ Examples:
 
 Edits an existing student in the SoCTAssist.
 
-Format: `edit_student INDEX [n/NAME] [i/NUSNETID]  [t/TELEGRAM] [p/PHONE] [e/EMAIL]`
+Format: `edit_student INDEX [n/NAME] [i/NUSNETID] [t/TELEGRAM] [p/PHONE] [e/EMAIL]`
 
 * Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer**, e.g. 1, 2, 3, …​
 * At least one of the fields must be provided to change the student's details.
@@ -210,6 +210,7 @@ Format: `delete INDEX`
 * Deletes the student at the specified `INDEX`.
 * The index refers to the index number shown in the **displayed** student list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* If the user is in the list_consult view, use list to go back to the main view before using the `delete` command.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd student in the displayed student list.
@@ -242,15 +243,14 @@ Examples:
 
 Adds a homework assignment for the specified student or for all students.
 
-Format: `add_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT`
+Format: `add_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER`
 
 * Adds the homework with the given assignment number for the specified student.
 * If `i/all` is used, the homework is added for all students.
 * The user can add homework to all students as long as at least one of the students do not have the homework yet. (i.e., adding homework is **successful** if **no one has the homework or some of them have the homework**, and is unsuccessful if all students already have the homework).
 * The newly added homework will have a default status of `incomplete`.
 * The assignment number should be a positive integer between 1 to 13.
-* If adding homework for a specific student, NUSNET ID is used, which starts with E and has 7 integer numbers (e.g., E1234567), and it should not be blank.
-* The NUSNET ID and homework number **must be valid**.
+* If adding homework for a specific student, NUSNET ID is used. The NUSNET ID and homework number **must be valid**.
 * The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the homework has been added already.
 
@@ -271,14 +271,13 @@ Examples:
 
 Marks the homework status for the specified student.
 
-Format: `mark_hw i/NUSNETID a/ASSIGNMENT status/STATUS`
+Format: `mark_hw i/NUSNETID a/ASSIGNMENT_NUMBER status/STATUS`
 
 * Marks the specified assignment for the given student with the specified status. The same homework can be marked for several times, and the most recent status will be saved.
 * The assignment number should be a positive integer between 1 to 13.
 * The assignment must exist for the student.
 * The `STATUS` can be one of the following: `complete`, `incomplete`, or `late`.
-* The NUSNET ID, homework number and status **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID, homework number and status **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the homework can be marked (i.e., whether the homework exists for the student).
 
 Examples:
@@ -297,14 +296,13 @@ Examples:
 
 Deletes the homework for the specified student or for all students.
 
-Format: `delete_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT`
+Format: `delete_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER`
 
 * Deletes the homework with the given assignment number for the specified student. 
 * The assignment number should be a positive integer between 1 to 13, and the assignment must exist for the student.
 * If `i/all` is used, the homework is deleted for all students.
 * The user can add homework to all students as long as at least one of the students have the homework. (i.e., deleting homework is successful if everyone has the homework or some of them have the homework, and is unsuccessful if none of the students has the homework).
-* The NUSNET ID and homework number **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID and homework number **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, the existence of the student, and lastly whether the student has the homework.
 
 Examples:
@@ -334,13 +332,15 @@ Format: `mark_attendance i/NUSNETID w/WEEK status/ATTENDANCE_STATUS`
 * Week number must between 2 to 13.
 * NUSNET ID can start with E and has 7 numbers, and it should not be blank.
 * The `ATTENDANCE_STATUS` can be one of the following: `present`, `absent`, or `excused`.
-* The NUSNET ID, week number and status **must be valid**.
-* The parameter constraints are listed [here](#Parameter-Constraints).
+* The NUSNET ID, week number and status **must be valid**. The parameter constraints are listed [here](#Parameter-Constraints).
 * The system will check the validity of command format, followed by validity of input, and lastly the existence of the student.
 
 Examples:
 * `mark_attendance i/E1234567 w/3 status/present` marks student `E1234567` as present for week 3.
+<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/77fc2a90-a3de-4cf6-8066-be36afb211bf" />
+
 * `mark_attendance i/E2345678 w/5 status/absent` marks student `E2345678` as absent for week 5.
+<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/a7951e3f-465f-44c3-8241-c5796c093361" />
 
 ---
 
@@ -361,7 +361,11 @@ Format: `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`
 
 Examples:
 * `mark_all_attendance g/T01 w/3 status/present` marks all students in group T01 as present for week 3.
-* `mark_all_attendance g/B04 w/5 status/absent` marks all students in group B04 as absent for week 5.
+<img width="3199" height="1895" alt="image" src="https://github.com/user-attachments/assets/43996d42-0818-4405-93bd-198feb5c8490" />
+
+* `mark_all_attendance g/T01 w/5 status/absent` marks all students in group T01 as absent for week 5.
+<img width="3198" height="1895" alt="image" src="https://github.com/user-attachments/assets/df045519-b799-47bd-8e05-00c08e0e030d" />
+
 
 ---
 ## Consultation Commands
