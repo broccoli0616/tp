@@ -262,7 +262,7 @@ Examples:
 
 * `add_hw i/all a/2` adds assignment 2 for all students.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/46677cf8-e493-4e13-8a13-762bdea83587" alt="image2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/46677cf8-e493-4e13-8a13-762bdea83587" alt="image2" width="100%" />
 </p>
 
 
@@ -283,12 +283,12 @@ Format: `mark_hw i/NUSNETID a/ASSIGNMENT_NUMBER status/STATUS`
 Examples:
 * `mark_hw i/E1234567 a/1 status/complete` marks assignment 1 as complete for student `E1234567`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d17b54dc-421b-4cef-beb0-435b3b2551b7" alt="mark_hw1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/d17b54dc-421b-4cef-beb0-435b3b2551b7" alt="mark_hw1" width="100%" />
 </p>
 
 * `mark_hw i/E1234568 a/2 status/late` marks assignment 2 as late for student `E1234568`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/699fcea0-d1e1-443c-b391-5006f29e8d8a" alt="mark_hw2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/699fcea0-d1e1-443c-b391-5006f29e8d8a" alt="mark_hw2" width="100%" />
 </p>
 
 
@@ -308,12 +308,12 @@ Format: `delete_hw i/NUSNETID (use 'i/all' for all students) a/ASSIGNMENT_NUMBER
 Examples:
 * `delete_hw i/E1234567 a/1` deletes assignment 1 for the student with NUSNET ID `E1234567`.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/707f5907-f158-4ce0-9183-bd4666475680" alt="delete_hw1" width="70%" />
+  <img src="https://github.com/user-attachments/assets/707f5907-f158-4ce0-9183-bd4666475680" alt="delete_hw1" width="100%" />
 </p>
 
 * `delete_hw i/all a/2` deletes assignment 2 for all students.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0671e0aa-fdc1-432e-ab9a-7f589519be3a" alt="delete_hw2" width="70%" />
+  <img src="https://github.com/user-attachments/assets/0671e0aa-fdc1-432e-ab9a-7f589519be3a" alt="delete_hw2" width="100%" />
 </p>
 
 > [!IMPORTANT]
@@ -430,6 +430,8 @@ Format: `create_group g/GROUPID`
 Examples:
 * `create_group g/T03` creates a new group with ID `T03`.
 * `create_group g/B05` creates a new group with ID `B05`.
+<img width="3198" height="1897" alt="image" src="https://github.com/user-attachments/assets/c3fa43d1-ec30-4710-8c32-9de9d43ed9b6" />
+
 
 ### Adding a student to a group : `add_to_group`
 
@@ -448,6 +450,8 @@ Examples:
 * `add_to_group i/E1234567 g/T03` move student with NUSNET ID `E1234567` from current group to group `T03`.
 * `add_to_group i/E2345678 g/B05` (assume group B05 does not exist initially) create group `B05` and move student `E2345678` to it.
 
+<img width="3199" height="1892" alt="image" src="https://github.com/user-attachments/assets/09d08a96-042a-445c-bc24-aac0a274deec" />
+
 ### Finding group members : `find_group`
 Finds all members in a specified tutorial group.
 
@@ -460,6 +464,7 @@ Format: `find_group g/GROUPID`
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
 * `find_group g/B05` displays all members in group `B05`.
+<img width="3199" height="1900" alt="image" src="https://github.com/user-attachments/assets/02069ac4-6e8f-4a86-8d22-1de95cf8b62c" />
 
 ---
 
