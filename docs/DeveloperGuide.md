@@ -467,11 +467,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to add a student by specifying required fields: full name, NUSNET ID, email, Telegram handle and optional fields: phone number, group ID.
 
-2. AddressBook validates all fields.
+2. SoCTAssist validates all fields.
 
-3. AddressBook adds the student into the directory.
+3. SoCTAssist adds the student into the directory.
 
-4. AddressBook shows the updated student list in the UI table.
+4. SoCTAssist shows the updated student list in the UI table.
 
     Use case ends.
 
@@ -479,27 +479,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. One or more required fields are missing.
 
-    * 2a1. AddressBook shows error: `Invalid command format!`.
+    * 2a1. SoCTAssist shows error.
 
         Use case ends.
 
 * 2b. Email format is invalid.
 
-    * 2b1. AddressBook shows error: `Invalid email format`.
+    * 2b1. SoCTAssist shows error.
 
         Use case ends.
 
 * 2c. Group ID format is invalid.
 
-    * 2c1. AddressBook shows error message: `Invalid Group ID`.
+    * 2c1. SoCTAssist shows error message.
 
         Use case ends.
 
 * 2d. A student with the same nusnetid already exists.
 
-    * 2d1. AddressBook shows error: `This person already exists in the address book.`.
-
-       Use case ends.
+    * 2d1. SoCTAssist shows error.
 
 **Use case:** UC02 - Edit a student
 **Actor**: TA
@@ -508,11 +506,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to edit a student by specifying the index and updated fields.
 
-2. AddressBook validates that the student exists.
+2. SoCTAssist validates that the student exists.
 
-3. AddressBook updates the student's details.
+3. SoCTAssist updates the student's details.
 
-4. AddressBook shows confirmation message with updated student details.
+4. SoCTAssist shows confirmation message with updated student details.
 
     Use case ends.
 
@@ -520,19 +518,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Student index does not exist.
 
-    * 2a1. AddressBook shows error: `The person index provided is invalid`.
+    * 2a1. SoCTAssist shows error: `The person index provided is invalid`.
 
       Use case ends.
 
 * 2b. Any updated field is invalid.
 
-    * 2b1. AddressBook shows corresponding validation error. (UC01 Extensions 2b, 2c).
+    * 2b1. SoCTAssist shows corresponding validation error. (UC01 Extensions 2b, 2c).
 
       Use case ends.
 
 * 2c. Try to update group id.
 
-    * 2c1. AddressBook shows error and states the correct format.
+    * 2c1. SoCTAssist shows error and states the correct format.
 
       Use case ends.
 
@@ -543,26 +541,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to list students.
 
-2. AddressBook shows a list of students.
+2. SoCTAssist shows a list of students.
 
 3. User requests to delete a specific student in the list.
 
-4. AddressBook deletes the student.
+4. SoCTAssist deletes the student.
 
-5. AddressBook UI updated.
+5. SoCTAssist UI updated.
     Use case ends.
 
 **Extensions**
 * 1a. The list is empty.
-    * 1a1. AddressBook shows error: `The student list is empty.`
+    * 1a1. SoCTAssist shows error. 
 
       Use case ends.    
 * 3a. Student index does not exist.
-    * 3a1. AddressBook shows error: `The person index provided is invalid`.
+    * 3a1. SoCTAssist shows error.
   
     Use case ends.
 * 3b. Student index is invalid (not a number or is not positive).
-    * 3b1. AddressBook shows error: `Invalid command format!`.
+    * 3b1. SoCTAssist shows error.
 
       Use case ends.
 
@@ -572,27 +570,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User enters a command to create a new homework numbered 1 to 3 for a student using their NUSNET ID.
-2. Homework Tracker locates the student homework record.
-3. Homework Tracker validates the assignment ID.
-4. Homework Tracker creates the new assignment with an initial status of `incomplete`.
-5. Homework Tracker displays a success message.
+2. SoCTAssist locates the student homework record.
+3. SoCTAssist validates the assignment ID.
+4. SoCTAssist creates the new assignment with an initial status of `incomplete`.
+5. SoCTAssist displays a success message.
 
    Use case ends.
 
 **Extensions**
 * 2a. Student with the given NUSNET ID does not exist
   
-    * 2a1. Homework Tracker displays an error message.
+    * 2a1. SoCTAssist displays an error message.
 
       Use case ends.
 * 3a. Homework ID already exists for this student
   
-  * 3a1. Homework Tracker displays an error message.
+  * 3a1. SoCTAssist displays an error message.
 
     Use case ends.
 * 3b. Homework ID is invalid (not between 1–13)
   
-  * 3b1. Homework Tracker displays an error message.
+  * 3b1. SoCTAssist displays an error message.
 
     Use case ends.
     
@@ -602,10 +600,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to mark a homework status for a student using their NUSNET ID.
-2. Homework Tracker locates the student homework record.
-3. Homework Tracker verifies the homework ID.
-4. Homework Tracker updates the homework status (complete / incomplete / late).
-5. Homework Tracker shows a confirmation message.
+2. SoCTAssist locates the student homework record.
+3. SoCTAssist verifies the homework ID.
+4. SoCTAssist updates the homework status (complete / incomplete / late).
+5. SoCTAssist shows a confirmation message.
 
    Use case ends.
 
@@ -617,21 +615,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The student with the given NUSNET ID does not exist.
   
-    * 2a1. Homework Tracker shows error message: `Student not found`.
+    * 2a1. SoCTAssist shows error message: `Student not found`.
   
       Use case ends.
 
 * 3a. The given assignment ID is invalid (not between 1-13).
   
-    * 3a1. Homework Tracker shows error message.
+    * 3a1. SoCTAssist shows error message.
   
       Use case ends.
+      
 * 4a. The given status is invalid (not one of complete / incomplete / late).
-    * 4a1. Homework Tracker shows error message.
+    * 4a1. SoCTAssist shows error message.
   
       Use case ends.
+      
 * 4b. The student already has a status recorded for this assignment.
-    * 4b1. Homework Tracker updates the record with the new status (last write wins).
+    * 4b1. SoCTAssist updates the record with the new status (last write wins).
 
       Use case resumes at step 5.
 
@@ -641,10 +641,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to delete a homework for a student using their NUSNET ID.  
-2. Homework Tracker locates the student homework record.  
-3. Homework Tracker verifies the homework ID.  
-4. Homework Tracker removes the corresponding homework record from the student’s tracker.  
-5. Homework Tracker shows a confirmation message.  
+2. SoCTAssist locates the student homework record.  
+3. SoCTAssist verifies the homework ID.  
+4. SoCTAssist removes the corresponding homework record from the student’s tracker.  
+5. SoCTAssist shows a confirmation message.  
 
    Use case ends.
 
@@ -655,17 +655,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.  
 
 * 2a. The student with the given NUSNET ID does not exist.  
-    * 2a1. Homework Tracker shows error message.  
+    * 2a1. SoCTAssist shows error message.  
 
       Use case ends.  
 
 * 3a. The given assignment ID is invalid.  
-    * 3a1. Homework Tracker shows error message.  
+    * 3a1. SoCTAssist shows error message.  
 
       Use case ends.  
 
 * 4a. The specified homework does not exist for the student.  
-    * 4a1. Homework Tracker shows error message.  
+    * 4a1. SoCTAssist shows error message.  
 
       Use case ends.  
 
@@ -677,11 +677,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to add a consultation by specifying student's NUSNET ID, start date & time, and end date & time.
 
-2. AddressBook validates the NUSNET ID, dates, and times.
+2. SoCTAssist validates the NUSNET ID, dates, and times.
 
-3. AddressBook creates the consultation booking for the student.
+3. SoCTAssist creates the consultation booking for the student.
 
-4. AddressBook shows success message with consultation details and displays list of consultations to user.
+4. SoCTAssist shows success message with consultation details and displays list of consultations to user.
 
     Use case ends.
 
@@ -689,43 +689,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Student NUSNET ID does not exist in the directory.
 
-  * 2a1. AddressBook shows an error message.
+  * 2a1. SoCTAssist shows an error message.
 
        Use case ends.
 
 * 2b. End time is not after start time.
 
-    * 2b1. AddressBook shows an error message.
+    * 2b1. SoCTAssist shows an error message.
 
          Use case ends.
 
 * 2c. The new consultation overlaps with an existing one.
 
-    * 2c1. AddressBook shows an error message.
+    * 2c1. SoCTAssist shows an error message.
 
          Use case ends.
 
 * 2d. A consultation with identical date and time already exists.
 
-    * 2d1. AddressBook shows an error message.
+    * 2d1. SoCTAssist shows an error message.
 
          Use case ends.
 
 * 2d. Student already has an existing consultation.
 
-    * 2d1. AddressBook shows an error message.
+    * 2d1. SoCTAssist shows an error message.
 
       Use case ends.
 
 * 4a. The consultation exceeds 3 hours in duration.
 
-    * 4a1. AddressBook displays a reminder message.
+    * 4a1. SoCTAssist displays a reminder message.
 
       Use case ends.
 
 * 4b. The consultation is over or ongoing.
 
-    * 4b1. AddressBook displays a reminder message.
+    * 4b1. SoCTAssist displays a reminder message.
 
       Use case ends.
 
@@ -736,13 +736,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to delete a consultation by specifying student's NUSNET ID.  
 
-2. AddressBook validates the NUSNET ID.  
+2. SoCTAssist validates the NUSNET ID.  
 
-3. AddressBook locates the consultation record that matches the provided details.  
+3. SoCTAssist locates the consultation record that matches the provided details.  
 
-4. AddressBook deletes the consultation from the system.  
+4. SoCTAssist deletes the consultation from the system.  
 
-5. AddressBook shows success message confirming the deletion and displays list of consultations to user.  
+5. SoCTAssist shows success message confirming the deletion and displays list of consultations to user.  
 
     Use case ends.  
 
@@ -750,13 +750,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. NUSNET ID does not exist in the directory.  
 
-  * 2a1. AddressBook shows an error message.  
+  * 2a1. SoCTAssist shows an error message.  
 
        Use case ends.  
 
 * 3a. Student with specified NUSNET ID does not have a consultation.  
 
-  * 3a1. AddressBook shows an error message.  
+  * 3a1. SoCTAssist shows an error message.  
 
        Use case ends.
 
@@ -767,11 +767,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to mark attendance for a student by specifying student NUSNET ID, week, and attendance status.
 
-2. AddressBook validates that the student exists and the week and status are valid.
+2. SoCTAssist validates that the student exists and the week and status are valid.
 
-3. AddressBook records the attendance for the student.
+3. SoCTAssist records the attendance for the student.
 
-4. AddressBook shows a confirmation message with details.
+4. SoCTAssist shows a confirmation message with details.
 
     Use case ends.
 
@@ -779,13 +779,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. Student NUSNET ID does not exist.
 
-    * 2a1. AddressBook shows error: `Student not found`.
+    * 2a1. SoCTAssist shows error: `Student not found`.
 
          Use case ends.
 
 * 2b. Attendance status is invalid (not Present or Absent or Excused).
 
-    * 2b1. AddressBook shows error: `Please enter present/absent/excused only`.
+    * 2b1. SoCTAssist shows error: `Please enter present/absent/excused only`.
 
          Use case ends.
 
@@ -796,11 +796,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to mark attendance for a group of student by specifying GroupId, week, and attendance status.
 
-2. AddressBook validates that the group exists and the week and status are valid.
+2. SoCTAssist validates that the group exists and the week and status are valid.
 
-3. AddressBook records the attendance for the student.
+3. SoCTAssist records the attendance for the student.
 
-4. AddressBook shows a confirmation message with details.
+4. SoCTAssist shows a confirmation message with details.
 
     Use case ends.
 
@@ -808,24 +808,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. GroupId does not exist.
 
-    * 2a1. AddressBook shows error: `Group not found`.
+    * 2a1. SoCTAssist shows error: `Group not found`.
 
          Use case ends.
 
 * 2b. Attendance status is invalid (not Present or Absent or Excused).
 
-    * 2b1. AddressBook shows error: `Please enter present/absent/excused only`.
+    * 2b1. SoCTAssist shows error: `Please enter present/absent/excused only`.
 
          Use case ends.
 
 * 2c. Week is invalid (input is not between 2 and 13 or is not an integer.").
 
-    * 2c1. AddressBook shows error: `Invalid Week. Week should be between 2 and 13 and be a positive integer.`.
+    * 2c1. SoCTAssist shows error: `Invalid Week. Week should be between 2 and 13 and be a positive integer.`.
 
          Use case ends.
 * 2d. Group does not have students.
 
-    * 2d1. AddressBook shows error: `No students in the group.`.
+    * 2d1. SoCTAssist shows error: `No students in the group.`.
 
          Use case ends.
 
@@ -835,26 +835,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to create a new group with a specified GroupId.
-2. Address Book validates the GroupId.
-3. System creates the group.
-4. System shows confirmation message.
+2. SoCTAssist validates the GroupId.
+3. SoCTAssist creates the group.
+4. SoCTAssist shows confirmation message.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The GroupId is missing.
-    * 2a1. System shows error message, saying GroupId is missing.
+    * 2a1. SoCTAssist shows error message, saying GroupId is missing.
 
     Use case ends.
 
 * 2b. The GroupId is invalid.
-    * 2c1. System shows error message and indicates the valid format for GroupId.
+    * 2c1. SoCTAssist shows error message and indicates the valid format for GroupId.
 
       Use case ends.
 
 * 2c. The GroupId is a duplicate.
-    * 2b1. System shows error message, saying GroupId already exists
+    * 2b1. SoCTAssist shows error message, saying GroupId already exists
 
       Use case ends.
 
@@ -865,28 +865,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to add a student to an existing group using the student’s NUSNET ID and GroupId.
-2. System verifies the student exists.
-3. System checks whether the group id is the same as the student's existing group.
-4. System checks whether the group exists.
-5. System adds the student to the specified group.
-6. System shows confirmation message.
+2. SoCTAssist verifies the student exists.
+3. SoCTAssist checks whether the group id is the same as the student's existing group.
+4. SoCTAssist checks whether the group exists.
+5. SoCTAssist adds the student to the specified group.
+6. SoCTAssist shows confirmation message.
 
    Use case ends.
 
 **Extensions**
 
 * 2a. The student with the NUSNET ID does not exist.
-    * 2a1. System shows error message.
+    * 2a1. SoCTAssist shows error message.
 
       Use case ends.
 
 * 3a. The group id is the same as the student's existing group.
-    * 3a1. System shows error message, saying student already in that group.
+    * 3a1. SoCTAssist shows error message, saying student already in that group.
 
       Use case ends.
 
 * 4a. The group does not exist.
-    * 4a1. System creates the group.
+    * 4a1. SoCTAssist creates the group.
 
       Use case resumes at step 5.
 
@@ -899,22 +899,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to find students by specifying a GroupId.
-2. System verifies the GroupId is valid.
-3. System checks whether the group exists.
-4. System retrieves the list of students in the specified group.
-5. System displays the list of students in the UI. 
+2. SoCTAssist verifies the GroupId is valid.
+3. SoCTAssist checks whether the group exists.
+4. SoCTAssist retrieves the list of students in the specified group.
+5. SoCTAssist displays the list of students in the UI. 
    
    Use case ends.
 
 **Extensions**
 
 * 2a. The GroupId is invalid.
-    * 2a1. System shows error message and indicates the valid format for Group Id.
+    * 2a1. SoCTAssist shows error message and indicates the valid format for Group Id.
 
       Use case ends.
 
 * 3a. The group does not exist.
-    * 3a1. System shows error message, saying group does not exist.
+    * 3a1. SoCTAssist shows error message, saying group does not exist.
   
       Use case ends.
 
