@@ -678,7 +678,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case:** UC07 - Add a consultation
 
-**User**: TA
+**Actor**: TA
 
 **MSS**
 
@@ -738,7 +738,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case:** UC08 - Delete a consultation
 
-**User**: TA
+**Actor**: TA
 
 **MSS**
 
@@ -769,7 +769,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
        Use case ends.
 
 **Use case:** UC09 - Mark attendance
-**User**: TA
+**Actor**: TA
 
 **MSS**
 
@@ -799,6 +799,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case: Mark all attendance**
+
+**Actor: TA**
 
 **MSS**
 
@@ -838,7 +840,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
          Use case ends.
 
 **Use case:** UC10 - Create student groups
-**User**: TA
+
+**Actor**: TA
 
 **MSS**
 
@@ -868,7 +871,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case:** UC11 - Add student to a group
-**User**: TA
+
+**Actor**: TA
 
 **MSS**
 
@@ -899,7 +903,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 5.
 
 **Use case:** UC12 - Find students by group
-**User**: TA
+
+**Actor**: TA
 
 **Guarantees**: 
 * If the GroupId is valid and exists, at least one student is found.
@@ -933,7 +938,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 - Maximum 500 students 
 - Maximum 20 tutorial groups
 - Support 12 weeks of attendance data (weeks 2-13)
-- Support maximum 3 assignments
+- Support maximum 13 homework
 - Maximum 1 consultation slot for each student
 
 ##### NFR-D2: Data Volatility
