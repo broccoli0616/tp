@@ -599,6 +599,8 @@ Furthermore, certain edits can cause the SoCTAssist to behave in unexpected ways
 
   (E.g. a consultation from `20251010 1400` to `20251010 1600` overlaps with a consultation from `20251010 1559` to `20251010 1759` but does not overlap with a consultation from `20251010 1600` to `20251010 1800`.)
 
+* **One-to-one**: A one-to-one consultation is a consultation that only has one teaching assistant and one student.
+
 * **CLI**: Command Line Interface. A text-based interface used to interact with software applications by typing commands.
 * **Week**: There are 13 weeks in each academic semester in NUS, and tutorial starts in Week 3.
 * **Assessment/Homework**: Work that needs to be done and submitted by mentees, graded by tutors.
