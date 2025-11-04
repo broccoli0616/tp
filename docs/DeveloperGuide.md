@@ -1188,7 +1188,7 @@ This section provides step-by-step, comprehensive instructions for performing **
    3. **Expected:**
    - Error message is displayed:  
      ```
-     Student not found.
+     Student with NUSNET ID E0000000 does not exist.
      ```
    - No homework is added.
 
