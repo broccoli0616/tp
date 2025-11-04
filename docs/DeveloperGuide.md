@@ -461,6 +461,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case:** UC01 - Add a student
+
 **Actor**: TA
 
 **MSS**
@@ -500,6 +501,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2d1. SoCTAssist shows error.
 
 **Use case:** UC02 - Edit a student
+
 **Actor**: TA
 
 **MSS**
@@ -535,6 +537,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 **Use case:** UC03 - Delete a student
+
 **Actor**: TA
 
 **MSS**
@@ -565,6 +568,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 **Use Case:** UC04 - Create Homework
+
 **Actor**: TA
 
 **MSS**
@@ -595,6 +599,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
     
 **Use case:** UC05 - Mark Homework completion
+
 **Actor**: TA
 
 **MSS**
@@ -636,6 +641,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 5.
 
 **Use case:** UC06 - Delete a homework
+
 **Actor**: TA
 
 **MSS**
@@ -671,6 +677,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case:** UC07 - Add a consultation
+
 **User**: TA
 
 **MSS**
@@ -730,6 +737,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 **Use case:** UC08 - Delete a consultation
+
 **User**: TA
 
 **MSS**
