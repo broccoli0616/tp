@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NUSNETID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TO;
 
 import java.time.Duration;
+import java.util.logging.Logger;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -39,6 +40,7 @@ public class AddConsultationCommand extends Command {
     public static final String MESSAGE_CONSULTATION_DURATION_TOO_LONG =
             "Friendly reminder: Consultation duration exceeds 3 hours!";
 
+    private static final Logger logger = Logger.getLogger(AddConsultationCommand.class.getName());
     private final Consultation toAdd;
 
     /**
@@ -49,24 +51,32 @@ public class AddConsultationCommand extends Command {
         toAdd = consultation;
     }
 
+    @SuppressWarnings("checkstyle:Regexp")
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        logger.info("Executing AddConsultationCommand for consultation: " + toAdd);
+
         if (!model.hasPerson(toAdd.getNusnetid())) {
+            logger.warning("Attempted to add duplicate consultation: " + toAdd);
             throw new CommandException(MESSAGE_STUDENT_DOES_NOT_EXIST);
         }
 
         if (model.hasConsultation(toAdd) || model.hasOverlappingConsultation(toAdd)) {
+            logger.warning("Attempted to add overlapping consultation: " + toAdd);
             throw new CommandException(MESSAGE_OVERLAPPING_CONSULTATION);
         }
 
         try {
             model.addConsultationToPerson(toAdd.getNusnetid(), toAdd);
         } catch (IllegalArgumentException e) { // handle error when student already has a consultation
+            logger.warning("Attempted to add consultation to student with existing consultation: " + toAdd);
             throw new CommandException(e.getMessage());
         }
 
         model.addConsultation(toAdd);
+        logger.info("Successfully added new consultation: " + toAdd);
         if (Duration.between(toAdd.getFrom(), toAdd.getTo()).toHours() > 3) {
             return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)) + "\n"
                     + MESSAGE_CONSULTATION_DURATION_TOO_LONG, false, false, true);
