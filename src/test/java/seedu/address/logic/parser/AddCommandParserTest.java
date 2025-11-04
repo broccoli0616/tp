@@ -193,7 +193,7 @@ public class AddCommandParserTest {
 
         // invalid nusnetid
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_NUSNETID_DESC
-                + TELEGRAM_DESC_BOB + GROUPID_DESC_BOB, "Nusnetid: " + Nusnetid.MESSAGE_CONSTRAINTS);
+                + TELEGRAM_DESC_BOB + GROUPID_DESC_BOB, "NUSNET ID: " + Nusnetid.MESSAGE_CONSTRAINTS);
 
         // invalid telegram
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + NUSNETID_DESC_BOB
@@ -206,7 +206,7 @@ public class AddCommandParserTest {
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_NUSNETID_DESC
                 + TELEGRAM_DESC_BOB + GROUPID_DESC_BOB, "Name: " + Name.MESSAGE_CONSTRAINTS
-                + System.lineSeparator() + "Nusnetid: " + Nusnetid.MESSAGE_CONSTRAINTS);
+                + System.lineSeparator() + "NUSNET ID: " + Nusnetid.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
