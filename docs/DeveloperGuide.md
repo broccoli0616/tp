@@ -68,7 +68,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/java/seedu/address/MainApp.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -79,7 +79,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -124,7 +124,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2526S1-CS2103T-W11-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -340,7 +340,7 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 </box>
 
 How the `create_group` command works:
-1. When the user enters a `creat_egroup` command, `LogicManager` passes it to `AddressBookParser`.
+1. When the user enters a `create_group` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `CreateGroupCommandParser` to parse the command arguments.
 3. `CreateGroupCommandParser` validates and parses the group ID.
 4. A `CreateGroupCommand` object is created and executed.
@@ -358,11 +358,11 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `AddStudentToGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `AddToGroupCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
 
 </box>
 
-How the `add_student_togroup` command works:
+How the `add_togroup` command works:
 1. When the user enters an `add_student_togroup` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates an `AddStudentToGroupCommandParser` to parse the command arguments.
 3. `AddStudentToGroupCommandParser` validates and parses the NUSNET ID and group ID.
