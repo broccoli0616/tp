@@ -61,27 +61,27 @@ done faster than traditional Graphical User Interface (GUI) apps while still hav
 --------------------------------------------------------------------------------------------------------------------
 # Command Summary
 
-| Action                      | Format                                                                                     | Example                                                                              |
-|-----------------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| **Display help message**    | `help`                                                                                     | `help`                                                                               |
-| **List students**           | `list`                                                                                     | `list`                                                                               |
-| **List consultations**      | `list_consult`                                                                             | `list_consult`                                                                       |
-| **Add student**             | `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID [p/PHONE_NUMBER] [e/EMAIL]`            | `add_student n/James Ho i/E1234567 t/@jame g/T02 [p/22224444] [e/jamesho@u.nus.edu]` |
-| **Edit student**            | `edit_student INDEX [n/NAME] [i/NUSNETID] [t/TELEGRAM] [p/PHONE_NUMBER] [e/EMAIL]`         | `edit_student 2 n/James Lee e/jameslee@u.nus.edu`                                    |
-| **Delete student**          | `delete INDEX`                                                                             | `delete 3`                                                                           |
-| **Find students by name**   | `find KEYWORD [MORE_KEYWORDS]`                                                             | `find James Jake`                                                                    |
-| **Add homework**            | `add_hw i/NUSNETID a/ASSIGNMENT`<br>(use `i/all` for all students)                         | `add_hw i/E1234567 a/1`                                                              |
-| **Mark homework**           | `mark_hw i/NUSNETID a/ASSIGNMENT status/STATUS`<br>(STATUS: complete, incomplete, late)    | `mark_hw i/E1234567 a/1 status/complete`                                                    |
-| **Delete homework**         | `delete_hw i/NUSNETID a/ASSIGNMENT`<br>(use `i/all` for all students)                      | `delete_hw i/E1234567 a/1`                                                           |
-| **Mark attendance**         | `mark_attendance i/NUSNETID w/WEEK status/ATTENDANCE_STATUS`<br>(STATUS: present, absent, excused)    | `mark_attendance i/E1234567 w/3 status/present`                                      |
-| **Mark attendance for all** | `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`<br>(STATUS: present, absent, excused) | `mark_all_attendance g/T01 w/3 status/present`                                       |
-| **Add consultation**        | `add_consult i/NUSNETID from/DATE_TIME to/DATE_TIME`                                       | `add_consult i/E1234567 from/20240915 1400 to/20240915 1500`                         |
-| **Delete consultation**     | `delete_consult i/NUSNETID`                                                                | `delete_consult i/E1234567`                                                          |
-| **Create group**            | `create_group g/GROUPID`                                                                   | `create_group g/T03`                                                                 |
-| **Add student to group**    | `add_to_group i/NUSNETID g/GROUPID`                                                        | `add_to_group i/E1234567 g/T03`                                                      |
-| **Find students by group**  | `find_group g/GROUPID`                                                                     | `find_group g/T03`                                                                   |
-| **Clear SoCTAssist**        | `clear`                                                                                    | `clear`                                                                              |
-| **Exit application**        | `exit`                                                                                     | `exit`                                                                               |
+| Action                      | Format                                                                                                           | Example                                                                              |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| **Display help message**    | `help`                                                                                                           | `help`                                                                               |
+| **List students**           | `list`                                                                                                           | `list`                                                                               |
+| **List consultations**      | `list_consult`                                                                                                   | `list_consult`                                                                       |
+| **Add student**             | `add_student n/NAME i/NUSNETID t/TELEGRAM g/GROUPID [p/PHONE_NUMBER] [e/EMAIL]`                                  | `add_student n/James Ho i/E1234567 t/@jame g/T02 [p/22224444] [e/jamesho@u.nus.edu]` |
+| **Edit student**            | `edit_student INDEX [n/NAME] [i/NUSNETID] [t/TELEGRAM] [p/PHONE_NUMBER] [e/EMAIL]`                               | `edit_student 2 n/James Lee e/jameslee@u.nus.edu`                                    |
+| **Delete student**          | `delete INDEX`                                                                                                   | `delete 3`                                                                           |
+| **Find students by name**   | `find KEYWORD [MORE_KEYWORDS]`                                                                                   | `find James Jake`                                                                    |
+| **Add homework**            | `add_hw i/NUSNETID a/ASSIGNMENT`<br>(use `i/all` for all students)                                               | `add_hw i/E1234567 a/1`                                                              |
+| **Mark homework**           | `mark_hw i/NUSNETID a/ASSIGNMENT status/STATUS`<br>(STATUS: complete, incomplete, late)                          | `mark_hw i/E1234567 a/1 status/complete`                                                    |
+| **Delete homework**         | `delete_hw i/NUSNETID a/ASSIGNMENT`<br>(use `i/all` for all students)                                            | `delete_hw i/E1234567 a/1`                                                           |
+| **Mark attendance**         | `mark_attendance i/NUSNETID w/WEEK status/ATTENDANCE_STATUS`<br>(ATTENDANCE_STATUS: present, absent, excused)    | `mark_attendance i/E1234567 w/3 status/present`                                      |
+| **Mark attendance for all** | `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`<br>(ATTENDANCE_STATUS: present, absent, excused) | `mark_all_attendance g/T01 w/3 status/present`                                       |
+| **Add consultation**        | `add_consult i/NUSNETID from/DATE_TIME to/DATE_TIME`                                                             | `add_consult i/E1234567 from/20240915 1400 to/20240915 1500`                         |
+| **Delete consultation**     | `delete_consult i/NUSNETID`                                                                                      | `delete_consult i/E1234567`                                                          |
+| **Create group**            | `create_group g/GROUPID`                                                                                         | `create_group g/T03`                                                                 |
+| **Add student to group**    | `add_to_group i/NUSNETID g/GROUPID`                                                                              | `add_to_group i/E1234567 g/T03`                                                      |
+| **Find students by group**  | `find_group g/GROUPID`                                                                                           | `find_group g/T03`                                                                   |
+| **Clear SoCTAssist**        | `clear`                                                                                                          | `clear`                                                                              |
+| **Exit application**        | `exit`                                                                                                           | `exit`                                                                               |
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -337,11 +337,14 @@ Format: `mark_attendance i/NUSNETID w/WEEK status/ATTENDANCE_STATUS`
 
 Examples:
 * `mark_attendance i/E1234567 w/3 status/present` marks student `E1234567` as present for week 3.
-<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/77fc2a90-a3de-4cf6-8066-be36afb211bf" />
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/77fc2a90-a3de-4cf6-8066-be36afb211bf" width="100%" />
+</p>
 
 * `mark_attendance i/E2345678 w/5 status/absent` marks student `E2345678` as absent for week 5.
-<img width="3199" height="1899" alt="image" src="https://github.com/user-attachments/assets/a7951e3f-465f-44c3-8241-c5796c093361" />
-
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/a7951e3f-465f-44c3-8241-c5796c093361" width="100%"/>
+</p>
 ---
 
 ### Marking attendance for one group of students : `mark_all_attendance`
@@ -361,10 +364,13 @@ Format: `mark_all_attendance g/GROUPID w/WEEK status/ATTENDANCE_STATUS`
 
 Examples:
 * `mark_all_attendance g/T01 w/3 status/present` marks all students in group T01 as present for week 3.
-<img width="3199" height="1895" alt="image" src="https://github.com/user-attachments/assets/43996d42-0818-4405-93bd-198feb5c8490" />
-
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/43996d42-0818-4405-93bd-198feb5c8490" width="100%"/>
+</p>
 * `mark_all_attendance g/T01 w/5 status/absent` marks all students in group T01 as absent for week 5.
-<img width="3198" height="1895" alt="image" src="https://github.com/user-attachments/assets/df045519-b799-47bd-8e05-00c08e0e030d" />
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/df045519-b799-47bd-8e05-00c08e0e030d" width="100%"/>
+</p>
 
 
 ---
@@ -430,8 +436,9 @@ Format: `create_group g/GROUPID`
 Examples:
 * `create_group g/T03` creates a new group with ID `T03`.
 * `create_group g/B05` creates a new group with ID `B05`.
-<img width="3198" height="1897" alt="image" src="https://github.com/user-attachments/assets/c3fa43d1-ec30-4710-8c32-9de9d43ed9b6" />
-
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/c3fa43d1-ec30-4710-8c32-9de9d43ed9b6" width="100%" />
+</p>
 
 ### Adding a student to a group : `add_to_group`
 
@@ -449,9 +456,9 @@ Format: `add_to_group i/NUSNETID g/GROUPID`
 Examples:
 * `add_to_group i/E1234567 g/T03` move student with NUSNET ID `E1234567` from current group to group `T03`.
 * `add_to_group i/E2345678 g/B05` (assume group B05 does not exist initially) create group `B05` and move student `E2345678` to it.
-
-<img width="3199" height="1892" alt="image" src="https://github.com/user-attachments/assets/09d08a96-042a-445c-bc24-aac0a274deec" />
-
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/09d08a96-042a-445c-bc24-aac0a274deec" width="100%"/>
+</p>
 ### Finding group members : `find_group`
 Finds all members in a specified tutorial group.
 
@@ -464,8 +471,9 @@ Format: `find_group g/GROUPID`
 Examples:
 * `find_group g/T03` displays all members in group `T03`.
 * `find_group g/B05` displays all members in group `B05`.
-<img width="3199" height="1900" alt="image" src="https://github.com/user-attachments/assets/02069ac4-6e8f-4a86-8d22-1de95cf8b62c" />
-
+<p align="center">
+<img alt="image" src="https://github.com/user-attachments/assets/02069ac4-6e8f-4a86-8d22-1de95cf8b62c" width="100%"/>
+</p>
 ---
 
 ## Clearing all entries : `clear`
