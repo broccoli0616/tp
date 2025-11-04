@@ -1322,7 +1322,7 @@ This section provides step-by-step, comprehensive instructions for performing **
 | 6          | `delete_hw i/E1234567 a/3`            | ❌ Homework does not exist                  |
 | 7          | `delete_hw i/E1234567 i/E7654321 a/1` | ❌ Duplicate prefixes                       |
 
-### Mark homework### Mark homework
+### Mark homework
 1. Mark homework as completed for a single student  
    1. Setup: Ensure that there is at least one student in the system with NUSNET ID `E1234567`, and that the student has homework **1** assigned.  
    2. Execute the command:  
@@ -1423,7 +1423,7 @@ This section provides step-by-step, comprehensive instructions for performing **
 
 
 ## **Appendix: Planned Enhancement**
-This section outlines potential future enhancements for the application that could improve its functionality, usability, or performance. These enhancements are not part of the current scope but may be considered for future development. \\
+This section outlines potential future enhancements for the application that could improve its functionality, usability, or performance. These enhancements are not part of the current scope but may be considered for future development. 
 Team size: 5
 
 
