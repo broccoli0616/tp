@@ -158,8 +158,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `addhomework` command works:
-1. When the user enters an `addhomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `add_hw` command works:
+1. When the user enters an `add_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates an `AddHomeworkCommandParser` to parse the command arguments.
 3. `AddHomeworkCommandParser` validates and parses the NUSNET ID (or the keyword `all`) and the assignment ID.
 4. An `AddHomeworkCommand` object is created and executed.
@@ -183,8 +183,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `deletehomework` command works:
-1. When the user enters a `deletehomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `delete_hw` command works:
+1. When the user enters a `delete_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `DeleteHomeworkCommandParser` to parse the command arguments.
 3. `DeleteHomeworkCommandParser` validates and parses the NUSNET ID (or the keyword `all`) and the assignment ID.
 4. A `DeleteHomeworkCommand` object is created and executed.
@@ -208,8 +208,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 </box>
 
-How the `markhomework` command works:
-1. When the user enters a `markhomework` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_hw` command works:
+1. When the user enters a `mark_hw` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkHomeworkCommandParser` to parse the command arguments.
 3. `MarkHomeworkCommandParser` validates and parses the NUSNET ID, assignment ID, and status.
 4. A `MarkHomeworkCommand` object is created and executed.
@@ -224,16 +224,16 @@ The mark attendance feature allows users to mark the attendance status (e.g., `p
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
+<puml src="diagrams/MarkAttendanceSequenceDiagram.puml"  alt="Interactions Inside the Logic Component for the `mark_attendance` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `MarkAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `MarkAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.Due to limited space in the diagram, some input parameters(command text, markAttendanceMessage) are not explicitly shown in the diagram.
 
 </box>
 
-How the `markAttendance` command works:
-1. When the user enters a `markAttendance` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_attendance` command works:
+1. When the user enters a `mark_attendance` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkAttendanceCommandParser` to parse the command arguments.
 3. `MarkAttendanceCommandParser` validates and parses the NUSNET ID, week number, and attendance status.
 4. A `MarkAttendanceCommand` object is created and executed.
@@ -248,16 +248,16 @@ The mark all attendance feature allows users to mark the attendance status (e.g.
 
 The sequence diagram below illustrates the interactions within the `Logic` component for marking attendance:
 
-<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml" width ="1200" height ="900" alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
+<puml src="diagrams/MarkAllAttendanceSequenceDiagram.puml"  alt="Interactions Inside the Logic Component for the `mark_all_attendance` Command" />
 
 <box type="info" seamless>
 
-**Note:** The lifeline for `MarkAllAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram.
+**Note:** The lifeline for `MarkAllAttendanceCommandParser` should end at the destroy marker (X), but due to a limitation of PlantUML, the lifeline continues till the end of the diagram. Due to limited space in the diagram, some input parameters(command text, markAttendanceMessage) are not explicitly shown in the diagram.
 
 </box>
 
-How the `markAllAttendance` command works:
-1. When the user enters a `markAllAttendance` command, `LogicManager` passes it to `AddressBookParser`.
+How the `mark_all_attendance` command works:
+1. When the user enters a `mark_all_attendance` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `MarkAllAttendanceCommandParser` to parse the command arguments.
 3. `MarkAllAttendanceCommandParser` validates and parses the GroupId, week number, and attendance status.
 4. A `MarkAllAttendanceCommand` object is created and executed.
@@ -339,8 +339,8 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 </box>
 
-How the `creategroup` command works:
-1. When the user enters a `creategroup` command, `LogicManager` passes it to `AddressBookParser`.
+How the `create_group` command works:
+1. When the user enters a `creat_egroup` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates a `CreateGroupCommandParser` to parse the command arguments.
 3. `CreateGroupCommandParser` validates and parses the group ID.
 4. A `CreateGroupCommand` object is created and executed.
@@ -362,8 +362,8 @@ The sequence diagram below illustrates the interactions within the `Logic` and `
 
 </box>
 
-How the `addstudenttogroup` command works:
-1. When the user enters an `addstudenttogroup` command, `LogicManager` passes it to `AddressBookParser`.
+How the `add_student_togroup` command works:
+1. When the user enters an `add_student_togroup` command, `LogicManager` passes it to `AddressBookParser`.
 2. `AddressBookParser` creates an `AddStudentToGroupCommandParser` to parse the command arguments.
 3. `AddStudentToGroupCommandParser` validates and parses the NUSNET ID and group ID.
 4. An `AddStudentToGroupCommand` object is created and executed.
