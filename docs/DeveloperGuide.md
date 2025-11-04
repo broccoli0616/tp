@@ -798,8 +798,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
          Use case ends.
 
 
-**Use case: Mark all attendance**
-
+**Use case: Mark all attendance** <br>
 
 **Actor: TA**
 
